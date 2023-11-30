@@ -5,12 +5,14 @@
  */
 package model.MarketModel;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author kal bugrara
  */
 public class MarketCatalog {
 
-  // ArrayList<Market> markets;
+  ArrayList<Market> markets;
 
 }
