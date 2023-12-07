@@ -5,10 +5,12 @@
  */
 package model.MarketModel;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author kal bugrara
  */
 public class Channel {
-    
+  ArrayList<Market> markets;
 }

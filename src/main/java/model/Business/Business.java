@@ -12,6 +12,7 @@ import model.MarketModel.ChannelCatalog;
 import model.MarketModel.MarketCatalog;
 import model.MarketingManagement.MarketingPersonDirectory;
 import model.OrderManagement.MasterOrderList;
+import model.OrderManagement.MasterSolutionOrderList;
 import model.Personnel.EmployeeDirectory;
 import model.Personnel.PersonDirectory;
 import model.ProductManagement.ProductSummary;
@@ -35,6 +36,7 @@ public class Business {
     MarketCatalog marketcatalog;
     ChannelCatalog channelcatalog;
     SolutionOfferCatalog solutionoffercatalog;
+    MasterSolutionOrderList mastersolutionorderlist;
     CustomerDirectory customerdirectory;
     EmployeeDirectory employeedirectory;
     SalesPersonDirectory salespersondirectory;
@@ -52,7 +54,18 @@ public class Business {
         useraccountdirectory = new UserAccountDirectory();
         marketingpersondirectory = new MarketingPersonDirectory(this);
         employeedirectory = new EmployeeDirectory(this);
+        marketcatalog = new MarketCatalog(this);
+        channelcatalog = new ChannelCatalog();
+        mastersolutionorderlist = new MasterSolutionOrderList(this);
 
+    }
+
+    public MarketCatalog getMarketcatalog() {
+        return marketcatalog;
+    }
+
+    public void setMarketcatalog(MarketCatalog marketcatalog) {
+        this.marketcatalog = marketcatalog;
     }
 
     public int getSalesVolume() {

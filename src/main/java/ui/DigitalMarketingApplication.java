@@ -9,6 +9,9 @@ import java.util.Scanner;
 
 import model.Business.Business;
 import model.Business.ConfigureABusiness;
+import model.CustomerManagement.CustomerDirectory;
+import model.MarketModel.Market;
+import model.MarketModel.MarketCatalog;
 import model.OrderManagement.MasterOrderList;
 import model.OrderManagement.MasterOrderReport;
 import model.ProductManagement.ProductCatalog;
@@ -36,6 +39,10 @@ public class DigitalMarketingApplication {
 
     MasterOrderList mol = business.getMasterOrderList();
     MasterOrderReport orderReport = mol.generateMasterOrderReport();
+    MarketCatalog marketCatalog = business.getMarketcatalog();
+    // Generate data
+    Market marketTeachers = marketCatalog.newMarket("teacher");
+    Market marketStudents = marketCatalog.newMarket("student");
 
     // 2. Maybe some interaction with the user (optional)
 
@@ -44,28 +51,96 @@ public class DigitalMarketingApplication {
     boolean exitCode = false;
 
     while (!exitCode) {
-      System.out.println("Welcome to Sunday Lab demo app. Please pick an option:");
-      System.out.println("1. Print Product Performance Report");
-      System.out.println("2. Print Master Order Report");
-      System.out.println("3. Exit");
+      System.out.println("Welcome to join Education Sale! Please pick an option:");
+      System.out.println("1. I am a teacher");
+      System.out.println("2. I am an student");
+      System.out.println("3. I want to see the reports");
+      System.out.println("4. Exit");
 
       String input = sc.next();
 
       // System.out.println(input);
 
+      // 1. I am a teacher
       if (input.equals("1")) {
-        Supplier randomSupplier = sd.pickRandomSupplier();
-        ProductCatalog pd = randomSupplier.getProductCatalog();
-        ProductsReport myFirstReport = pd.generateProductPerformanceReport("Name");
-        myFirstReport.printProductReport();
+
+        Scanner sc1 = new Scanner(System.in);
+
+        boolean exitCode1 = false;
+
+        while (!exitCode1) {
+          System.out.println("This is the list of the teachers: " + marketTeachers.getCustomersID());
+          System.out.println("What's the channel you use? Please pick an option");
+          System.out.println("1. Instagram");
+          System.out.println("2. Facebook");
+          System.out.println("3. Exit");
+
+          String input1 = sc1.next();
+
+          // System.out.println(input);
+
+          // 1. I am a teacher and choose 1. Instagram
+          if (input1.equals("1")) {
+
+          }
+
+          // 1. I am a teacher and choose 2. Facebook
+          if (input1.equals("2")) {
+
+          }
+
+          if (input1.equals("3"))
+            exitCode1 = true;
+
+          sc1.close();
+        }
 
       }
 
-      if (input.equals("2"))
-        orderReport.printOrderReport();
+      // 2. I am an student
+      if (input.equals("2")) {
 
-      if (input.equals("3"))
+        Scanner sc1 = new Scanner(System.in);
+
+        boolean exitCode1 = false;
+
+        while (!exitCode1) {
+          System.out.println("What's the channel you use? Please pick an option");
+          System.out.println("1. Instagram");
+          System.out.println("2. Facebook");
+          System.out.println("3. Exit");
+
+          String input1 = sc1.next();
+
+          // System.out.println(input);
+
+          // 1. I am a student and choose 1. Instagram
+          if (input1.equals("1")) {
+
+          }
+
+          // 1. I am a student and choose 2. Facebook
+          if (input1.equals("2")) {
+
+          }
+
+          if (input1.equals("3"))
+            exitCode1 = true;
+
+          sc1.close();
+        }
+      }
+
+      // 3. I want to see the reports
+      if (input.equals("3")) {
+        System.out.println("Please pick an option:");
+      }
+
+      // 4. Exit
+      if (input.equals("4")) {
         exitCode = true;
+      }
+
     }
 
     System.out.println("Thank you, have a nice day.");

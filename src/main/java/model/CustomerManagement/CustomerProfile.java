@@ -5,11 +5,15 @@
  */
 package model.CustomerManagement;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+import model.MarketModel.Channel;
 import model.MarketModel.Market;
 import model.OrderManagement.Order;
+import model.OrderManagement.SolutionOrder;
 import model.Personnel.Person;
+import model.ProductManagement.SolutionOffer;
 
 /**
  *
@@ -17,13 +21,32 @@ import model.Personnel.Person;
  */
 public class CustomerProfile {
     ArrayList<Order> orders;
+    ArrayList<SolutionOrder> solutionOrders;
     ArrayList<Market> markets;
 
+    // Channel channel;
+    // // at specific customers through a specific market and channel
     Person person;
 
     public CustomerProfile(Person p) {
         person = p;
         orders = new ArrayList<Order>();
+    }
+
+    public ArrayList<SolutionOrder> getSolutionOrders() {
+        return solutionOrders;
+    }
+
+    public void setSolutionOrders(ArrayList<SolutionOrder> solutionOrders) {
+        this.solutionOrders = solutionOrders;
+    }
+
+    public ArrayList<Market> getMarkets() {
+        return markets;
+    }
+
+    public void setMarkets(ArrayList<Market> markets) {
+        this.markets = markets;
     }
 
     public int getTotalPricePerformance() {
@@ -63,6 +86,10 @@ public class CustomerProfile {
 
     public void addCustomerOrder(Order o) {
         orders.add(o);
+    }
+
+    public void addSolutionOrder(SolutionOrder o) {
+        solutionOrders.add(o);
     }
 
     @Override

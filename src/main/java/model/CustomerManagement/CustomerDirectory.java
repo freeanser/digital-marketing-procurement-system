@@ -6,7 +6,9 @@
 package model.CustomerManagement;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 import model.Business.Business;
 import model.Personnel.Person;
@@ -27,6 +29,22 @@ public class CustomerDirectory {
 
     }
 
+    public ArrayList<CustomerProfile> newRandomCustomerlist(int count) {
+        if (customerlist.size() == 0) {
+            System.out.println("Cannot find customer list!");
+        }
+        ;
+        // Pick random Customers
+        Set<CustomerProfile> customerSet = new HashSet<>();
+        while (customerSet.size() < count) {
+            Random r = new Random();
+            int randomIndex = r.nextInt(customerlist.size());
+            customerSet.add(customerlist.get(randomIndex));
+        }
+        customerlist = new ArrayList<>(customerSet);
+        return customerlist;
+    }
+
     public CustomerProfile newCustomerProfile(Person p) {
 
         CustomerProfile sp = new CustomerProfile(p);
@@ -42,28 +60,29 @@ public class CustomerDirectory {
                 return sp;
             }
         }
-            return null; //not found after going through the whole list
-         }
-        public CustomersReport generatCustomerPerformanceReport(){
+        return null; // not found after going through the whole list
+    }
+
+    public CustomersReport generatCustomerPerformanceReport() {
         CustomersReport customersreport = new CustomersReport();
-    
-        for(CustomerProfile cp: customerlist){
-            
+
+        for (CustomerProfile cp : customerlist) {
+
             CustomerSummary cs = new CustomerSummary(cp);
             customersreport.addCustomerSummary(cs);
         }
-        return customersreport; 
+        return customersreport;
     }
 
-    public CustomerProfile pickRandomCustomer(){
-        if (customerlist.size() == 0) return null;
+    public CustomerProfile pickRandomCustomer() {
+        if (customerlist.size() == 0)
+            return null;
         Random r = new Random();
         int randomIndex = r.nextInt(customerlist.size());
         return customerlist.get(randomIndex);
     }
 
-
-    public void printShortInfo(){
+    public void printShortInfo() {
         System.out.println("Checking what's inside the Customer directory.");
         System.out.println("There are " + customerlist.size() + " customers.");
     }
