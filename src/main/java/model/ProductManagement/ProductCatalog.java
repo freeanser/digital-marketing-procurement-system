@@ -6,7 +6,11 @@
 package model.ProductManagement;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
+
+import model.CustomerManagement.CustomerProfile;
 
 /**
  *
@@ -61,6 +65,22 @@ public class ProductCatalog {
         Random r = new Random();
         int randomIndex = r.nextInt(products.size());
         return products.get(randomIndex);
+    }
+
+    public ArrayList<Product> newRandomProducts(ArrayList<Product> productsList, int count) {
+        if (productsList.size() == 0) {
+            System.out.println("Cannot find Product list!");
+        }
+        ;
+        // Pick random Products
+        Set<Product> productSet = new HashSet<>();
+        while (productSet.size() < count) {
+            Random r = new Random();
+            int randomIndex = r.nextInt(productsList.size());
+            productSet.add(productsList.get(randomIndex));
+        }
+        ArrayList<Product> newProducts = new ArrayList<>(productSet);
+        return newProducts;
     }
 
     public void printShortInfo() {

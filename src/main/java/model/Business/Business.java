@@ -47,7 +47,7 @@ public class Business {
         name = n;
         masterorderlist = new MasterOrderList();
         suppliers = new SupplierDirectory();
-        // solutionoffercatalog = new SolutionOfferCatalog();
+        solutionoffercatalog = new SolutionOfferCatalog();
         persondirectory = new PersonDirectory();
         customerdirectory = new CustomerDirectory(this);
         salespersondirectory = new SalesPersonDirectory(this);
@@ -55,9 +55,25 @@ public class Business {
         marketingpersondirectory = new MarketingPersonDirectory(this);
         employeedirectory = new EmployeeDirectory(this);
         marketcatalog = new MarketCatalog(this);
-        channelcatalog = new ChannelCatalog();
+        channelcatalog = new ChannelCatalog(this);
         mastersolutionorderlist = new MasterSolutionOrderList(this);
 
+    }
+
+    public SolutionOfferCatalog getSolutionoffercatalog() {
+        return solutionoffercatalog;
+    }
+
+    public void setSolutionoffercatalog(SolutionOfferCatalog solutionoffercatalog) {
+        this.solutionoffercatalog = solutionoffercatalog;
+    }
+
+    public ChannelCatalog getChannelcatalog() {
+        return channelcatalog;
+    }
+
+    public void setChannelcatalog(ChannelCatalog channelcatalog) {
+        this.channelcatalog = channelcatalog;
     }
 
     public MarketCatalog getMarketcatalog() {

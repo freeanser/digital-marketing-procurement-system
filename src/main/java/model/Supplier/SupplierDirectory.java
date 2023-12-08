@@ -6,7 +6,11 @@
 package model.Supplier;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
+
+import model.ProductManagement.Product;
 
 /**
  *
@@ -19,11 +23,14 @@ public class SupplierDirectory {
         suppliers = new ArrayList<Supplier>();
     }
 
+    public ArrayList<Supplier> getSupplierList() {
+        return suppliers;
+    }
+
     public Supplier newSupplier(String n) {
         Supplier supplier = new Supplier(n);
         suppliers.add(supplier);
         return supplier;
-
     }
 
     public Supplier findSupplier(String id) {
@@ -36,8 +43,15 @@ public class SupplierDirectory {
         return null;
     }
 
-    public ArrayList<Supplier> getSupplierList() {
-        return suppliers;
+    // find all products from all suppliers
+    public ArrayList<Product> findAllProducts() {
+        ArrayList<Product> products = new ArrayList<Product>();
+        for (Supplier s : suppliers) {
+            for (Product p : s.getProductCatalog().getProductList()) {
+                products.add(p);
+            }
+        }
+        return products;
     }
 
     public Supplier pickRandomSupplier() {

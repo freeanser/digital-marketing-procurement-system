@@ -7,6 +7,9 @@ package model.ProductManagement;
 
 import java.util.ArrayList;
 
+import com.github.javafaker.Faker;
+
+import model.CustomerManagement.CustomerProfile;
 import model.MarketModel.MarketChannelAssignment;
 import model.OrderManagement.SolutionOfferOrderItem;
 
@@ -35,6 +38,32 @@ public class SolutionOffer {
 
     public void addProduct(Product p) {
         products.add(p);
+    }
+
+    public void addProducts(ArrayList<Product> newproducts) {
+        products.addAll(newproducts);
+    }
+
+    public void finProductsProfessionName() {
+        Faker faker = new Faker();
+        int index = 1;
+        for (Product p : products) {
+            String professionName = faker.company().profession();
+            p.setName(professionName);
+            System.out.println("(" + index + ")" + p.getName());
+            index++;
+        }
+    }
+
+    public void finProductsIngredientName() {
+        Faker faker = new Faker();
+        int index = 1;
+        for (Product p : products) {
+            String ingredientName = faker.food().ingredient();
+            p.setName(ingredientName);
+            System.out.println("(" + index + ")" + p.getName());
+            index++;
+        }
     }
 
     public void setPrice(int p) {
