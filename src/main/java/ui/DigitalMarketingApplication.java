@@ -85,12 +85,12 @@ public class DigitalMarketingApplication {
     // 4. Exit
     if (input.equals("4")) {
       System.out.println("Thank you, have a nice day.");
-
       sc.close();
-      // exitCode = true;
     }
-
-    // }
+    if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
+      System.out.println("Please enter a valid option.");
+      renderMainMenuOptions(sc);
+    }
 
   }
 
@@ -110,7 +110,11 @@ public class DigitalMarketingApplication {
 
     // 1. I am a teacher and choose 1. Instagram
     if (input.equals("1")) {
-      model.getTi().printInfo();
+
+      // model.getTi().printInfo();
+      String advertisingMessage = model.getTi().getAllAdvertisingMessages().get(0);
+      System.out.println("Advertising Message: " + advertisingMessage);
+
       handleTeacherInstagram(sc);
 
     }
@@ -123,12 +127,15 @@ public class DigitalMarketingApplication {
     if (input.equals("3"))
       renderMainMenuOptions(sc);
 
-    if (input.equals("4"))
+    if (input.equals("4")) {
       System.out.println("Thank you, have a nice day.");
-    sc.close();
-    // exitCode = true;
+      sc.close();
+    }
+    if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
+      System.out.println("Please enter a valid option.");
+      handleTeacherOption(sc, marketTeachers);
+    }
 
-    // }
   }
 
   // Handle teacher & instagram
@@ -136,9 +143,10 @@ public class DigitalMarketingApplication {
     // TI
     SolutionOffer amazonBundlesProductsTI = model.getSolutionoffercatalog().newSolutionOffer(model.getTi(),
         model.getAmazonBundlesProducts(), 1600);
-    SolutionOffer groceryTI = model.getSolutionoffercatalog().newSolutionOffer(model.getTi(), model.getGrocery(), 1970);
+    SolutionOffer groceryBundlesProductsTI = model.getSolutionoffercatalog().newSolutionOffer(model.getTi(),
+        model.getGroceryBundlesProducts(), 1970);
     System.out.println("1. Amazon Bundles Products");
-    System.out.println("2. Grocery");
+    System.out.println("2. Grocery Bundles Products");
     System.out.println("3. Previous Page");
     System.out.println("4. Exit");
 
@@ -153,17 +161,22 @@ public class DigitalMarketingApplication {
       handleBuyOrNot(sc, amazonBundlesProductsTI);
     }
 
-    // 2. Grocery
+    // 2. Grocery Bundles Products
     if (input.equals("2")) {
-      // groceryTI.printInfo();
+      // groceryBundlesProductsTI.printInfo();
     }
 
     if (input.equals("3"))
       handleTeacherOption(sc, model.getMarketTeachers());
 
-    if (input.equals("4"))
+    if (input.equals("4")) {
       System.out.println("Thank you, have a nice day.");
-    sc.close();
+      sc.close();
+    }
+    if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
+      System.out.println("Please enter a valid option.");
+      handleTeacherInstagram(sc);
+    }
 
   }
 
@@ -270,46 +283,43 @@ public class DigitalMarketingApplication {
     Channel channelInstagram = channelCatalog.newChannel("Instagram");
     Channel channelFacebook = channelCatalog.newChannel("Facebook");
     MarketChannelAssignment ti = new MarketChannelAssignment(marketTeachers, channelInstagram,
-        "Hi! Are you a teacher? For a limited time on Instagram, teachers can now purchase all the following items at a discounted price!",
         18000.0);
     MarketChannelAssignment tf = new MarketChannelAssignment(marketTeachers, channelFacebook,
-        "Hi! Are you a teacher? For a limited time on Facebook, teachers can now purchase all the following items at a discounted price!",
         17700.0);
     MarketChannelAssignment si = new MarketChannelAssignment(marketStudents, channelInstagram,
-        "Hi! Are you a student? For a limited time on Instagram, students can now purchase all the following items at a discounted price!",
         10200.0);
     MarketChannelAssignment sf = new MarketChannelAssignment(marketStudents, channelFacebook,
-        "Hi! Are you a student? For a limited time on Facebook, students can now purchase all the following items at a discounted price!",
         10000.0);
 
     // Soulution Offer (Bundle of products)
     ArrayList<Product> allProducts = sd.findAllProducts();
     ArrayList<Product> amazonBundlesProducts = solutionoffercatalog.setRandomProducts(allProducts, 5);
-    ArrayList<Product> grocery = solutionoffercatalog.setRandomProducts(allProducts, 5);
+    ArrayList<Product> groceryBundlesProducts = solutionoffercatalog.setRandomProducts(allProducts, 5);
 
     // solution offer
     // // TI
     // SolutionOffer amazonBundlesProductsTI =
     // solutionoffercatalog.newSolutionOffer(ti,
     // amazonBundlesProducts, 1000);
-    // SolutionOffer groceryTI = solutionoffercatalog.newSolutionOffer(ti, grocery,
+    // SolutionOffer groceryBundlesProductsTI =
+    // solutionoffercatalog.newSolutionOffer(ti, groceryBundlesProducts,
     // 1370);
 
     // TF
     SolutionOffer amazonBundlesProductsTF = solutionoffercatalog.newSolutionOffer(tf, amazonBundlesProducts, 1770);
-    SolutionOffer groceryTF = solutionoffercatalog.newSolutionOffer(tf, grocery, 1880);
+    SolutionOffer groceryBundlesProductsTF = solutionoffercatalog.newSolutionOffer(tf, groceryBundlesProducts, 1880);
 
     // SI
     SolutionOffer amazonBundlesProductsSI = solutionoffercatalog.newSolutionOffer(si, amazonBundlesProducts, 1005);
-    SolutionOffer grocerySI = solutionoffercatalog.newSolutionOffer(si, grocery, 999);
+    SolutionOffer groceryBundlesProductsSI = solutionoffercatalog.newSolutionOffer(si, groceryBundlesProducts, 999);
 
     // SF
     SolutionOffer amazonBundlesProductsSF = solutionoffercatalog.newSolutionOffer(sf, amazonBundlesProducts, 1050);
-    SolutionOffer grocerySF = solutionoffercatalog.newSolutionOffer(sf, grocery, 1030);
+    SolutionOffer groceryBundlesProductsSF = solutionoffercatalog.newSolutionOffer(sf, groceryBundlesProducts, 1030);
 
     return new DigitalMarketApplicationModel(business, sd, mol, orderReport, marketCatalog, channelCatalog,
         solutionoffercatalog, marketTeachers, marketStudents, channelInstagram, channelFacebook, ti, tf, si, sf,
-        allProducts, amazonBundlesProducts, grocery);
+        allProducts, amazonBundlesProducts, groceryBundlesProducts);
 
   }
 }

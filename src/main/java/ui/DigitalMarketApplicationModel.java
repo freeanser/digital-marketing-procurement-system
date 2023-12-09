@@ -32,7 +32,7 @@ public class DigitalMarketApplicationModel {
   private MarketChannelAssignment sf;
   private ArrayList<Product> allProducts;
   private ArrayList<Product> amazonBundlesProducts;
-  private ArrayList<Product> grocery;
+  private ArrayList<Product> groceryBundlesProducts;
 
   public DigitalMarketApplicationModel(
       Business b,
@@ -43,7 +43,8 @@ public class DigitalMarketApplicationModel {
       ChannelCatalog channelCatalog, SolutionOfferCatalog solutionoffercatalog, Market marketTeachers,
       Market marketStudents, Channel channelInstagram, Channel channelFacebook, MarketChannelAssignment ti,
       MarketChannelAssignment tf, MarketChannelAssignment si, MarketChannelAssignment sf,
-      ArrayList<Product> allProducts, ArrayList<Product> amazonBundlesProducts, ArrayList<Product> grocery) {
+      ArrayList<Product> allProducts, ArrayList<Product> amazonBundlesProducts,
+      ArrayList<Product> groceryBundlesProducts) {
     this.business = b;
     this.sd = sd;
     this.mol = mol;
@@ -61,7 +62,7 @@ public class DigitalMarketApplicationModel {
     this.sf = sf;
     this.allProducts = allProducts;
     this.amazonBundlesProducts = amazonBundlesProducts;
-    this.grocery = grocery;
+    this.groceryBundlesProducts = groceryBundlesProducts;
   }
 
   public SolutionOfferCatalog getSolutionoffercatalog() {
@@ -96,8 +97,8 @@ public class DigitalMarketApplicationModel {
     return amazonBundlesProducts;
   }
 
-  public ArrayList<Product> getGrocery() {
-    return grocery;
+  public ArrayList<Product> getGroceryBundlesProducts() {
+    return groceryBundlesProducts;
   }
 
   public void generateOrderReport() {
