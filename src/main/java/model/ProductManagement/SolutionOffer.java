@@ -48,8 +48,8 @@ public class SolutionOffer {
         Faker faker = new Faker();
         int index = 1;
         for (Product p : products) {
-            String professionName = faker.company().profession();
-            p.setName(professionName);
+            String fakeName = faker.commerce().productName();
+            p.setName(fakeName);
             System.out.println("(" + index + ")" + p.getName());
             index++;
         }
