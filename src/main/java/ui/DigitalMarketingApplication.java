@@ -288,6 +288,104 @@ public class DigitalMarketingApplication {
     }
   }
 
+  // Handle student & instagram
+  public void handleStudentInstagram(Scanner sc) {
+    // SI
+    SolutionOffer amazonBundlesProductsSI = model.getSolutionoffercatalog().newSolutionOffer(model.getSi(),
+        model.getAmazonBundlesProducts(), 1005);
+    SolutionOffer groceryBundlesProductsSI = model.getSolutionoffercatalog().newSolutionOffer(model.getSi(),
+        model.getGroceryBundlesProducts(), 999);
+    System.out.println("1. Amazon Bundles Products");
+    System.out.println("2. Grocery Bundles Products");
+    System.out.println("3. Previous Page");
+    System.out.println("4. Exit");
+
+    String input = sc.next();
+
+    // 1. Amazon Bundles Products
+    if (input.equals("1")) {
+      model.getSi().printInfo();
+      System.out.println("Including all these items, the total cost is only $" + amazonBundlesProductsSI.getPrice()
+          + "! Act fast before it's gone! ");
+      amazonBundlesProductsSI.findProductsName();
+      handleBuyOrNot(sc, amazonBundlesProductsSI);
+    }
+
+    // 2. Grocery Bundles Products
+    if (input.equals("2")) {
+      model.getSi().printInfo();
+      System.out.println("Including all these items, the total cost is only $" + groceryBundlesProductsSI.getPrice()
+          + "! Act fast before it's gone! ");
+      groceryBundlesProductsSI.finProductsIngredientName();
+    }
+
+    // 3. Previous Page
+    if (input.equals("3"))
+      handleStudentOption(sc, model.getMarketStudents());
+
+    // 4. Exit
+    if (input.equals("4")) {
+      System.out.println("Thank you, have a nice day.");
+      sc.close();
+    }
+
+    // if user press other keys
+    if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
+      System.out.println("Please enter a valid option.");
+      handleStudentInstagram(sc);
+    }
+
+  }
+
+  // Handle student & facebook
+  public void handleStudentFacebook(Scanner sc) {
+    // SF
+    SolutionOffer amazonBundlesProductsSF = model.getSolutionoffercatalog().newSolutionOffer(model.getSf(),
+        model.getAmazonBundlesProducts(), 1050);
+    SolutionOffer groceryBundlesProductsSF = model.getSolutionoffercatalog().newSolutionOffer(model.getSf(),
+        model.getGroceryBundlesProducts(), 1030);
+    System.out.println("1. Amazon Bundles Products");
+    System.out.println("2. Grocery Bundles Products");
+    System.out.println("3. Previous Page");
+    System.out.println("4. Exit");
+
+    String input = sc.next();
+
+    // 1. Amazon Bundles Products
+    if (input.equals("1")) {
+      model.getSf().printInfo();
+      System.out.println("Including all these items, the total cost is only $" + amazonBundlesProductsSF.getPrice()
+          + "! Act fast before it's gone! ");
+      amazonBundlesProductsSF.findProductsName();
+      handleBuyOrNot(sc, amazonBundlesProductsSF);
+    }
+
+    // 2. Grocery Bundles Products
+    if (input.equals("2")) {
+      model.getSf().printInfo();
+      System.out.println("Including all these items, the total cost is only $" + groceryBundlesProductsSF.getPrice()
+          + "! Act fast before it's gone! ");
+      groceryBundlesProductsSF.finProductsIngredientName();
+    }
+
+    // 3. Previous Page
+    if (input.equals("3"))
+      handleStudentOption(sc, model.getMarketStudents());
+
+    // 4. Exit
+    if (input.equals("4")) {
+      System.out.println("Thank you, have a nice day.");
+      sc.close();
+    }
+
+    // if user press other keys
+    if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
+      System.out.println("Please enter a valid option.");
+      handleStudentFacebook(sc);
+    }
+
+  }
+
   private void confirmOrder(SolutionOffer so) {
      model.addOrder
   }
