@@ -92,6 +92,8 @@ public class DigitalMarketingApplication {
 
   }
 
+  // Handle Customer Option
+
   // Handle Teacher Option
   public void handleTeacherOption(Scanner sc, Market marketTeachers) {
 
@@ -409,9 +411,10 @@ public class DigitalMarketingApplication {
     }
 
     // 3. Exit
-    if (input.equals("3"))
+    if (input.equals("3")) {
       System.out.println("Thank you, have a nice day.");
-    sc.close();
+      sc.close();
+    }
   }
 
   // Handle Reports Option
@@ -441,6 +444,11 @@ public class DigitalMarketingApplication {
         exitCode = true;
 
     }
+  }
+
+  // SolutionOffer Generate
+  public static void solutionOfferGenerate() {
+
   }
 
   public static DigitalMarketApplicationModel populateModel() {
