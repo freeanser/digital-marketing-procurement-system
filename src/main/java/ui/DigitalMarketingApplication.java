@@ -242,31 +242,49 @@ public class DigitalMarketingApplication {
 
   // Handle Student Option
   public void handleStudentOption(Scanner sc, Market marketStudents) {
-    boolean exitCode = false;
+    // boolean exitCode = false;
 
-    while (!exitCode) {
-      System.out.println("This is the list of the " + marketStudents.getCustomersID());
-      System.out.println("What's the channel you use? Please pick an option");
-      System.out.println("1. Instagram");
-      System.out.println("2. Facebook");
-      System.out.println("3. Exit");
+    // while (!exitCode) {
+    System.out.println("This is the list of the " + marketStudents.getCustomersID());
+    System.out.println("What's the channel you use? Please pick an option");
+    System.out.println("1. Instagram");
+    System.out.println("2. Facebook");
+    System.out.println("3. Exit");
 
-      String input = sc.next();
+    String input = sc.next();
 
-      // System.out.println(input);
+    // System.out.println(input);
 
-      // 1. I am a student and choose 1. Instagram
-      if (input.equals("1")) {
-        model.getSi().printInfo();
-      }
+    // 1. I am a student and choose 1. Instagram
+    if (input.equals("1")) {
+      String advertisingMessage = model.getSi().getAllAdvertisingMessages().get(2);
+      System.out.println("Advertising Message: " + advertisingMessage);
 
-      // 1. I am a student and choose 2. Facebook
-      if (input.equals("2")) {
-        model.getSf().printInfo();
-      }
+      handleStudentInstagram(sc);
+    }
 
-      if (input.equals("3"))
-        exitCode = true;
+    // 1. I am a student and choose 2. Facebook
+    if (input.equals("2")) {
+      String advertisingMessage = model.getSi().getAllAdvertisingMessages().get(3);
+      System.out.println("Advertising Message: " + advertisingMessage);
+      handleStudentFacebook(sc);
+    }
+
+    // 3. Previous Page
+    if (input.equals("3")) {
+      renderMainMenuOptions(sc);
+    }
+
+    // 4. Exit
+    if (input.equals("4")) {
+      System.out.println("Thank you, have a nice day.");
+      sc.close();
+    }
+
+    // if user press other keys
+    if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
+      System.out.println("Please enter a valid option.");
+      handleStudentOption(sc, marketStudents);
     }
   }
 
