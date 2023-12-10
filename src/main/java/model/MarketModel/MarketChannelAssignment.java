@@ -8,6 +8,9 @@ package model.MarketModel;
 import java.util.Arrays;
 import java.util.List;
 
+import model.Advertisement.Advertisement;
+import model.Advertisement.AdvertisementCatalog;
+
 /**
  *
  * @author kal bugrara
@@ -16,21 +19,53 @@ public class MarketChannelAssignment {
 
     Market market;
     Channel channel;
-    String AdvertisingMessage;
+    Advertisement advertisement;
     Double AdvertisingBudget;
-    List<String> allAdvertisingMessages = Arrays.asList(
-            "Hi! Are you a teacher? For a limited time on Instagram, teachers can now purchase all the following items at a discounted price!",
-            "Hi! Are you a teacher? For a limited time on Facebook, teachers can now purchase all the following items at a discounted price!",
-            "Hi! Are you a student? For a limited time on Instagram, students can now purchase all the following items at a discounted price!",
-            "Hi! Are you a student? For a limited time on Facebook, students can now purchase all the following items at a discounted price!");
+    private static AdvertisementCatalog advertisementCatalog = new AdvertisementCatalog();
 
     public MarketChannelAssignment(Market m, Channel c, Double ab) {
 
         market = m;
         channel = c;
-        // AdvertisingMessage = am;
         AdvertisingBudget = ab;
 
+    }
+
+    /**
+     * Gets the advertising message based on the market and channel.
+     * If the market and channel match specific conditions, returns the
+     * corresponding
+     * advertising message from the advertisement catalog.
+     * Otherwise, returns a default advertising message.
+     */
+
+    public String getAdvertisingMessage() {
+
+        // Retrieve the list of advertisements from the shared catalog
+        List<Advertisement> advertisements = advertisementCatalog.getAdvertisements();
+
+        if (market != null && channel != null) {
+            // Check market and channel conditions to determine the appropriate message
+            // Return the first message for teacher on Instagram
+            if (market.getName().equals("teacher") && channel.getName().equals("Instagram")) {
+                return advertisements.get(0).getMessage();
+                // Return the second message for teacher on Facebook
+            } else if (market.getName().equals("teacher") && channel.getName().equals("Facebook")) {
+                return advertisements.get(1).getMessage();
+                // Return the third message for student on Instagram
+            } else if (market.getName().equals("student") && channel.getName().equals("Instagram")) {
+                return advertisements.get(2).getMessage();
+                // Return the fourth message for student on Facebook
+            } else if (market.getName().equals("student") && channel.getName().equals("Facebook")) {
+                return advertisements.get(3).getMessage();
+            }
+        }
+
+        return "Default Advertising Message";
+    }
+
+    public void setAdvertisement(Advertisement advertisement) {
+        this.advertisement = advertisement;
     }
 
     public Market getMarket() {
@@ -49,18 +84,6 @@ public class MarketChannelAssignment {
         this.channel = channel;
     }
 
-    public List<String> getAllAdvertisingMessages() {
-        return allAdvertisingMessages;
-    }
-
-    public String getAdvertisingMessage() {
-        return AdvertisingMessage;
-    }
-
-    public void setAdvertisingMessage(String advertisingMessage) {
-        AdvertisingMessage = advertisingMessage;
-    }
-
     public Double getAdvertisingBudget() {
         return AdvertisingBudget;
     }
@@ -69,7 +92,7 @@ public class MarketChannelAssignment {
         StringBuilder mcaInfo = new StringBuilder();
         mcaInfo.append("Market: " + market.getName()).append("\n");
         mcaInfo.append("Channel: " + channel.getName()).append("\n");
-        // mcaInfo.append("Advertising Message: " + AdvertisingMessage).append("\n");
+        mcaInfo.append("Advertising Message: ").append(getAdvertisingMessage()).append("\n");
         mcaInfo.append(" (Advertising Budget: " + AdvertisingBudget + ")").append("\n");
 
         System.out.println(mcaInfo.toString());

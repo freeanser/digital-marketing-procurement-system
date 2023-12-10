@@ -107,8 +107,6 @@ public class DigitalMarketingApplication {
     // 1. I am a teacher and choose 1. Instagram
     if (input.equals("1")) {
       model.getTi().printInfo();
-      String advertisingMessage = model.getTi().getAllAdvertisingMessages().get(0);
-      System.out.println("Advertising Message: " + advertisingMessage);
 
       handleTeacherInstagram(sc);
 
@@ -117,8 +115,6 @@ public class DigitalMarketingApplication {
     // 1. I am a teacher and choose 2. Facebook
     if (input.equals("2")) {
       model.getTf().printInfo();
-      String advertisingMessage = model.getTi().getAllAdvertisingMessages().get(1);
-      System.out.println("Advertising Message: " + advertisingMessage);
 
       handleTeacherFacebook(sc);
     }
@@ -258,8 +254,6 @@ public class DigitalMarketingApplication {
     // 1. I am a student and choose 1. Instagram
     if (input.equals("1")) {
       model.getSi().printInfo();
-      String advertisingMessage = model.getSi().getAllAdvertisingMessages().get(2);
-      System.out.println("Advertising Message: " + advertisingMessage);
 
       handleStudentInstagram(sc);
     }
@@ -267,8 +261,6 @@ public class DigitalMarketingApplication {
     // 1. I am a student and choose 2. Facebook
     if (input.equals("2")) {
       model.getSf().printInfo();
-      String advertisingMessage = model.getSi().getAllAdvertisingMessages().get(3);
-      System.out.println("Advertising Message: " + advertisingMessage);
 
       handleStudentFacebook(sc);
     }
@@ -481,12 +473,10 @@ public class DigitalMarketingApplication {
 
     // solution offer
     // // TI
-    // SolutionOffer amazonBundlesProductsTI =
-    // solutionoffercatalog.newSolutionOffer(ti,
-    // amazonBundlesProducts, 1000);
-    // SolutionOffer groceryBundlesProductsTI =
-    // solutionoffercatalog.newSolutionOffer(ti, groceryBundlesProducts,
-    // 1370);
+    SolutionOffer amazonBundlesProductsTI = solutionoffercatalog.newSolutionOffer(ti,
+        amazonBundlesProducts, 1000);
+    SolutionOffer groceryBundlesProductsTI = solutionoffercatalog.newSolutionOffer(ti, groceryBundlesProducts,
+        1370);
 
     // TF
     SolutionOffer amazonBundlesProductsTF = solutionoffercatalog.newSolutionOffer(tf, amazonBundlesProducts, 1770);
