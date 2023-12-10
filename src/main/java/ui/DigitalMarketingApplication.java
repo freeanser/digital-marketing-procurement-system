@@ -171,6 +171,7 @@ public class DigitalMarketingApplication {
       System.out.println("Including all these items, the total cost is only $" + groceryBundlesProductsTI.getPrice()
           + "! Act fast before it's gone! ");
       groceryBundlesProductsTI.finProductsIngredientName();
+      handleBuyOrNot(sc, groceryBundlesProductsTI);
     }
 
     // 3. Previous Page
@@ -220,6 +221,7 @@ public class DigitalMarketingApplication {
       System.out.println("Including all these items, the total cost is only $" + groceryBundlesProductsTF.getPrice()
           + "! Act fast before it's gone! ");
       groceryBundlesProductsTF.finProductsIngredientName();
+      handleBuyOrNot(sc, groceryBundlesProductsTF);
     }
 
     // 3. Previous Page
@@ -317,6 +319,7 @@ public class DigitalMarketingApplication {
       System.out.println("Including all these items, the total cost is only $" + groceryBundlesProductsSI.getPrice()
           + "! Act fast before it's gone! ");
       groceryBundlesProductsSI.finProductsIngredientName();
+      handleBuyOrNot(sc, groceryBundlesProductsSI);
     }
 
     // 3. Previous Page
@@ -366,6 +369,7 @@ public class DigitalMarketingApplication {
       System.out.println("Including all these items, the total cost is only $" + groceryBundlesProductsSF.getPrice()
           + "! Act fast before it's gone! ");
       groceryBundlesProductsSF.finProductsIngredientName();
+      handleBuyOrNot(sc, groceryBundlesProductsSF);
     }
 
     // 3. Previous Page
