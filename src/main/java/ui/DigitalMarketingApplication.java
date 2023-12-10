@@ -54,9 +54,6 @@ public class DigitalMarketingApplication {
 
   public void renderMainMenuOptions(Scanner sc) {
 
-    // boolean exitCode = false;
-
-    // while (!exitCode) {
     System.out.println("Welcome to join Education Sale! Please pick an option:");
     System.out.println("1. I am a teacher");
     System.out.println("2. I am an student");
@@ -89,6 +86,7 @@ public class DigitalMarketingApplication {
     }
     if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
       System.out.println("Please enter a valid option.");
+
       renderMainMenuOptions(sc);
     }
 
@@ -96,9 +94,7 @@ public class DigitalMarketingApplication {
 
   // Handle Teacher Option
   public void handleTeacherOption(Scanner sc, Market marketTeachers) {
-    // boolean exitCode = false;
 
-    // while (!exitCode) {
     System.out.println("This is the list of the " + marketTeachers.getCustomersID());
     System.out.println("What's the channel you use? Please pick an option");
     System.out.println("1. Instagram");
@@ -110,6 +106,7 @@ public class DigitalMarketingApplication {
 
     // 1. I am a teacher and choose 1. Instagram
     if (input.equals("1")) {
+      model.getTi().printInfo();
       String advertisingMessage = model.getTi().getAllAdvertisingMessages().get(0);
       System.out.println("Advertising Message: " + advertisingMessage);
 
@@ -119,8 +116,10 @@ public class DigitalMarketingApplication {
 
     // 1. I am a teacher and choose 2. Facebook
     if (input.equals("2")) {
+      model.getTf().printInfo();
       String advertisingMessage = model.getTi().getAllAdvertisingMessages().get(1);
       System.out.println("Advertising Message: " + advertisingMessage);
+
       handleTeacherFacebook(sc);
     }
 
@@ -137,6 +136,7 @@ public class DigitalMarketingApplication {
     // if user press other keys
     if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
       System.out.println("Please enter a valid option.");
+
       handleTeacherOption(sc, marketTeachers);
     }
 
@@ -158,19 +158,19 @@ public class DigitalMarketingApplication {
 
     // 1. Amazon Bundles Products
     if (input.equals("1")) {
-      model.getTi().printInfo();
       System.out.println("Including all these items, the total cost is only $" + amazonBundlesProductsTI.getPrice()
           + "! Act fast before it's gone! ");
       amazonBundlesProductsTI.findProductsName();
+
       handleBuyOrNot(sc, amazonBundlesProductsTI);
     }
 
     // 2. Grocery Bundles Products
     if (input.equals("2")) {
-      model.getTi().printInfo();
       System.out.println("Including all these items, the total cost is only $" + groceryBundlesProductsTI.getPrice()
           + "! Act fast before it's gone! ");
       groceryBundlesProductsTI.finProductsIngredientName();
+
       handleBuyOrNot(sc, groceryBundlesProductsTI);
     }
 
@@ -187,6 +187,7 @@ public class DigitalMarketingApplication {
     // if user press other keys
     if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
       System.out.println("Please enter a valid option.");
+
       handleTeacherInstagram(sc);
     }
 
@@ -208,19 +209,19 @@ public class DigitalMarketingApplication {
 
     // 1. Amazon Bundles Products
     if (input.equals("1")) {
-      model.getTf().printInfo();
       System.out.println("Including all these items, the total cost is only $" + amazonBundlesProductsTF.getPrice()
           + "! Act fast before it's gone! ");
       amazonBundlesProductsTF.findProductsName();
+
       handleBuyOrNot(sc, amazonBundlesProductsTF);
     }
 
     // 2. Grocery Bundles Products
     if (input.equals("2")) {
-      model.getTf().printInfo();
       System.out.println("Including all these items, the total cost is only $" + groceryBundlesProductsTF.getPrice()
           + "! Act fast before it's gone! ");
       groceryBundlesProductsTF.finProductsIngredientName();
+
       handleBuyOrNot(sc, groceryBundlesProductsTF);
     }
 
@@ -237,6 +238,7 @@ public class DigitalMarketingApplication {
     // if user press other keys
     if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
       System.out.println("Please enter a valid option.");
+
       handleTeacherFacebook(sc);
     }
 
@@ -244,9 +246,7 @@ public class DigitalMarketingApplication {
 
   // Handle Student Option
   public void handleStudentOption(Scanner sc, Market marketStudents) {
-    // boolean exitCode = false;
 
-    // while (!exitCode) {
     System.out.println("This is the list of the " + marketStudents.getCustomersID());
     System.out.println("What's the channel you use? Please pick an option");
     System.out.println("1. Instagram");
@@ -255,10 +255,9 @@ public class DigitalMarketingApplication {
 
     String input = sc.next();
 
-    // System.out.println(input);
-
     // 1. I am a student and choose 1. Instagram
     if (input.equals("1")) {
+      model.getSi().printInfo();
       String advertisingMessage = model.getSi().getAllAdvertisingMessages().get(2);
       System.out.println("Advertising Message: " + advertisingMessage);
 
@@ -267,8 +266,10 @@ public class DigitalMarketingApplication {
 
     // 1. I am a student and choose 2. Facebook
     if (input.equals("2")) {
+      model.getSf().printInfo();
       String advertisingMessage = model.getSi().getAllAdvertisingMessages().get(3);
       System.out.println("Advertising Message: " + advertisingMessage);
+
       handleStudentFacebook(sc);
     }
 
@@ -306,19 +307,19 @@ public class DigitalMarketingApplication {
 
     // 1. Amazon Bundles Products
     if (input.equals("1")) {
-      model.getSi().printInfo();
       System.out.println("Including all these items, the total cost is only $" + amazonBundlesProductsSI.getPrice()
           + "! Act fast before it's gone! ");
       amazonBundlesProductsSI.findProductsName();
+
       handleBuyOrNot(sc, amazonBundlesProductsSI);
     }
 
     // 2. Grocery Bundles Products
     if (input.equals("2")) {
-      model.getSi().printInfo();
       System.out.println("Including all these items, the total cost is only $" + groceryBundlesProductsSI.getPrice()
           + "! Act fast before it's gone! ");
       groceryBundlesProductsSI.finProductsIngredientName();
+
       handleBuyOrNot(sc, groceryBundlesProductsSI);
     }
 
@@ -335,6 +336,7 @@ public class DigitalMarketingApplication {
     // if user press other keys
     if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
       System.out.println("Please enter a valid option.");
+
       handleStudentInstagram(sc);
     }
 
@@ -356,19 +358,19 @@ public class DigitalMarketingApplication {
 
     // 1. Amazon Bundles Products
     if (input.equals("1")) {
-      model.getSf().printInfo();
       System.out.println("Including all these items, the total cost is only $" + amazonBundlesProductsSF.getPrice()
           + "! Act fast before it's gone! ");
       amazonBundlesProductsSF.findProductsName();
+
       handleBuyOrNot(sc, amazonBundlesProductsSF);
     }
 
     // 2. Grocery Bundles Products
     if (input.equals("2")) {
-      model.getSf().printInfo();
       System.out.println("Including all these items, the total cost is only $" + groceryBundlesProductsSF.getPrice()
           + "! Act fast before it's gone! ");
       groceryBundlesProductsSF.finProductsIngredientName();
+
       handleBuyOrNot(sc, groceryBundlesProductsSF);
     }
 
@@ -414,6 +416,7 @@ public class DigitalMarketingApplication {
       System.out.println("Thank you for your time! Have a nice day!");
     }
 
+    // 3. Exit
     if (input.equals("3"))
       System.out.println("Thank you, have a nice day.");
     sc.close();
