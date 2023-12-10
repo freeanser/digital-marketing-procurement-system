@@ -110,8 +110,6 @@ public class DigitalMarketingApplication {
 
     // 1. I am a teacher and choose 1. Instagram
     if (input.equals("1")) {
-
-      // model.getTi().printInfo();
       String advertisingMessage = model.getTi().getAllAdvertisingMessages().get(0);
       System.out.println("Advertising Message: " + advertisingMessage);
 
@@ -121,16 +119,22 @@ public class DigitalMarketingApplication {
 
     // 1. I am a teacher and choose 2. Facebook
     if (input.equals("2")) {
-      model.getTf().printInfo();
+      String advertisingMessage = model.getTi().getAllAdvertisingMessages().get(1);
+      System.out.println("Advertising Message: " + advertisingMessage);
+      handleTeacherFacebook(sc);
     }
 
+    // 3. Previous Page
     if (input.equals("3"))
       renderMainMenuOptions(sc);
 
+    // 4. Exit
     if (input.equals("4")) {
       System.out.println("Thank you, have a nice day.");
       sc.close();
     }
+
+    // if user press other keys
     if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
       System.out.println("Please enter a valid option.");
       handleTeacherOption(sc, marketTeachers);
@@ -157,25 +161,81 @@ public class DigitalMarketingApplication {
       model.getTi().printInfo();
       System.out.println("Including all these items, the total cost is only $" + amazonBundlesProductsTI.getPrice()
           + "! Act fast before it's gone! ");
-      amazonBundlesProductsTI.finProductsProfessionName();
+      amazonBundlesProductsTI.findProductsName();
       handleBuyOrNot(sc, amazonBundlesProductsTI);
     }
 
     // 2. Grocery Bundles Products
     if (input.equals("2")) {
-      // groceryBundlesProductsTI.printInfo();
+      model.getTi().printInfo();
+      System.out.println("Including all these items, the total cost is only $" + groceryBundlesProductsTI.getPrice()
+          + "! Act fast before it's gone! ");
+      groceryBundlesProductsTI.finProductsIngredientName();
     }
 
+    // 3. Previous Page
     if (input.equals("3"))
       handleTeacherOption(sc, model.getMarketTeachers());
 
+    // 4. Exit
     if (input.equals("4")) {
       System.out.println("Thank you, have a nice day.");
       sc.close();
     }
+
+    // if user press other keys
     if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
       System.out.println("Please enter a valid option.");
       handleTeacherInstagram(sc);
+    }
+
+  }
+
+  // Handle teacher & facebook
+  public void handleTeacherFacebook(Scanner sc) {
+    // TF
+    SolutionOffer amazonBundlesProductsTF = model.getSolutionoffercatalog().newSolutionOffer(model.getTf(),
+        model.getAmazonBundlesProducts(), 1770);
+    SolutionOffer groceryBundlesProductsTF = model.getSolutionoffercatalog().newSolutionOffer(model.getTf(),
+        model.getGroceryBundlesProducts(), 1880);
+    System.out.println("1. Amazon Bundles Products");
+    System.out.println("2. Grocery Bundles Products");
+    System.out.println("3. Previous Page");
+    System.out.println("4. Exit");
+
+    String input = sc.next();
+
+    // 1. Amazon Bundles Products
+    if (input.equals("1")) {
+      model.getTf().printInfo();
+      System.out.println("Including all these items, the total cost is only $" + amazonBundlesProductsTF.getPrice()
+          + "! Act fast before it's gone! ");
+      amazonBundlesProductsTF.findProductsName();
+      handleBuyOrNot(sc, amazonBundlesProductsTF);
+    }
+
+    // 2. Grocery Bundles Products
+    if (input.equals("2")) {
+      model.getTf().printInfo();
+      System.out.println("Including all these items, the total cost is only $" + groceryBundlesProductsTF.getPrice()
+          + "! Act fast before it's gone! ");
+      groceryBundlesProductsTF.finProductsIngredientName();
+    }
+
+    // 3. Previous Page
+    if (input.equals("3"))
+      handleTeacherOption(sc, model.getMarketTeachers());
+
+    // 4. Exit
+    if (input.equals("4")) {
+      System.out.println("Thank you, have a nice day.");
+      sc.close();
+    }
+
+    // if user press other keys
+    if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
+      System.out.println("Please enter a valid option.");
+      handleTeacherFacebook(sc);
     }
 
   }

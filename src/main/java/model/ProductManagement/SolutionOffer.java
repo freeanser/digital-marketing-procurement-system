@@ -44,7 +44,7 @@ public class SolutionOffer {
         products.addAll(newproducts);
     }
 
-    public void finProductsProfessionName() {
+    public void findProductsName() {
         Faker faker = new Faker();
         int index = 1;
         for (Product p : products) {
