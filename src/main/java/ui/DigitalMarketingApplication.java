@@ -186,10 +186,8 @@ public class DigitalMarketingApplication {
   // Handle customer teacher & instagram
   public void handleTeacherInstagram(Scanner sc) {
     // TI
-    SolutionOffer amazonBundlesProductsTI = model.getSolutionoffercatalog().newSolutionOffer(model.getTi(),
-        model.getAmazonBundlesProducts(), 1600);
-    SolutionOffer groceryBundlesProductsTI = model.getSolutionoffercatalog().newSolutionOffer(model.getTi(),
-        model.getGroceryBundlesProducts(), 1970);
+    SolutionOffer amazonBundlesProductsTI = model.getAmazonBundlesProductsTI();
+    SolutionOffer groceryBundlesProductsTI = model.getGroceryBundlesProductsTI();
     System.out.println("1. Amazon Bundles Products");
     System.out.println("2. Grocery Bundles Products");
     System.out.println("3. Previous Page");
@@ -467,10 +465,9 @@ public class DigitalMarketingApplication {
     System.out.println("What's the report you would like to check? Please pick an option");
     System.out.println("1. Total Sales");
     System.out.println("2. What Market");
-    System.out.println("3. Channel");
-    System.out.println("4. Advertisement");
-    System.out.println("5. Solution Offer");
-    System.out.println("6. Exit");
+    System.out.println("3. Advertisement");
+    System.out.println("4. Solution Offer");
+    System.out.println("5. Exit");
 
     String input = sc.next();
 
@@ -494,10 +491,6 @@ public class DigitalMarketingApplication {
     }
     // 5.
     if (input.equals("5")) {
-
-    }
-    // 6.
-    if (input.equals("6")) {
       System.out.println("Thank you, have a nice day.");
       sc.close();
     }
@@ -510,35 +503,147 @@ public class DigitalMarketingApplication {
     System.out.println("What market you are looking for? Please pick an option:");
     System.out.println("1. Market Teacher");
     System.out.println("2. Market Student");
+    System.out.println("3. Exit");
 
     String input = sc.next();
 
     // 1. I am a teacher
     if (input.equals("1")) {
-      ManagingTeacherOption(sc);
+      ManagingTeacherOption(sc, model.getMarketTeachers());
     }
 
     // 2. I am an student
     if (input.equals("2")) {
-      ManagingStudentOption(sc);
+      ManagingStudentOption(sc, model.getMarketStudents());
+    }
+
+    // 3. Exit
+    if (input.equals("3")) {
+      System.out.println("Thank you, have a nice day.");
+      sc.close();
+    }
+
+    // if user press other keys
+    if (!input.equals("1") && !input.equals("2") && !input.equals("3")) {
+      System.out.println("Please enter a valid option.");
+
+      ManagingMarketOption(sc);
     }
   }
 
   // Handle managing Teacher Option
-  public void ManagingTeacherOption(Scanner sc) {
+  public void ManagingTeacherOption(Scanner sc, Market marketTeachers) {
 
+    System.out.println("This is the list of the " + marketTeachers.getCustomersID());
+    System.out.println("What's the channel you use? Please pick an option");
+    System.out.println("1. Instagram");
+    System.out.println("2. Facebook");
+    System.out.println("3. Previous Page");
+    System.out.println("4. Exit");
+
+    String input = sc.next();
+
+    // 1. Market Teacher and choose 1. Instagram
+    if (input.equals("1")) {
+      ManagingTeacherInstagram(sc);
+    }
+
+    // 1. Market Teacher and choose 2. Facebook
+    if (input.equals("2")) {
+      ManagingTeacherFacebook(sc);
+    }
+
+    // 3. Previous Page
+    if (input.equals("3"))
+      ManagingMarketOption(sc);
+
+    // 4. Exit
+    if (input.equals("4")) {
+      System.out.println("Thank you, have a nice day.");
+      sc.close();
+    }
+
+    // if user press other keys
+    if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
+      System.out.println("Please enter a valid option.");
+
+      ManagingTeacherOption(sc, marketTeachers);
+    }
   }
 
   // Handle managing teacher & instagram
   public void ManagingTeacherInstagram(Scanner sc) {
+    // TI
+    SolutionOffer amazonBundlesProductsTI = model.getAmazonBundlesProductsTI();
+    SolutionOffer groceryBundlesProductsTI = model.getGroceryBundlesProductsTI();
+    System.out.println("Check ads and solution bundles. Please pick an option");
+    System.out.println("1. Amazon Bundles Products");
+    System.out.println("2. Grocery Bundles Products");
+    System.out.println("3. Previous Page");
+    System.out.println("4. Exit");
+
+    String input = sc.next();
+
+    // 1. Amazon Bundles Products
+    if (input.equals("1")) {
+      model.getTi().printInfo();
+
+      System.out.println("Including all these items, the total cost is only $" + amazonBundlesProductsTI.getPrice()
+          + "! Act fast before it's gone! ");
+      amazonBundlesProductsTI.findProductsName();
+
+      int price = amazonBundlesProductsTI.getPrice();
+      int quantity = amazonBundlesProductsTI.getProducts().size();
+
+      int total = amazonBundlesProductsTI.getSalesVolume(price, quantity);
+
+      System.out.println("The Sales Revenues by Market Teacher, Channel Instagram, Ads Amazon Bundles Products is $"
+          + total);
+    }
+
+    // 2. Grocery Bundles Products
+    if (input.equals("2")) {
+      model.getTi().printInfo();
+
+      System.out.println("Including all these items, the total cost is only $" + groceryBundlesProductsTI.getPrice()
+          + "! Act fast before it's gone! ");
+      groceryBundlesProductsTI.finProductsIngredientName();
+
+      int price = groceryBundlesProductsTI.getPrice();
+      int quantity = groceryBundlesProductsTI.getProducts().size();
+
+      int total = groceryBundlesProductsTI.getSalesVolume(price, quantity);
+
+      System.out.println("The Sales Revenues by Market Teacher, Channel Instagram, Ads Grocery Bundles Products is $"
+          + total);
+    }
+
+    // 3. Previous Page
+    if (input.equals("3"))
+      handleTeacherOption(sc, model.getMarketTeachers());
+
+    // 4. Exit
+    if (input.equals("4")) {
+      System.out.println("Thank you, have a nice day.");
+      sc.close();
+    }
+
+    // if user press other keys
+    if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
+      System.out.println("Please enter a valid option.");
+
+      handleTeacherInstagram(sc);
+    }
+
   }
 
   // Handle managing teacher & facebook
   public void ManagingTeacherFacebook(Scanner sc) {
+
   }
 
   // Handle managing Student Option
-  public void ManagingStudentOption(Scanner sc) {
+  public void ManagingStudentOption(Scanner sc, Market marketStudents) {
 
   }
 
@@ -655,7 +760,9 @@ public class DigitalMarketingApplication {
     return new DigitalMarketApplicationModel(business, sd, mol, orderReport, marketCatalog, channelCatalog,
         solutionoffercatalog,
         masterSolutionOrderList, marketTeachers, marketStudents, channelInstagram, channelFacebook, ti, tf, si, sf,
-        allProducts, amazonBundlesProducts, groceryBundlesProducts);
+        allProducts, amazonBundlesProducts, groceryBundlesProducts, amazonBundlesProductsTI, groceryBundlesProductsTI,
+        amazonBundlesProductsTF, groceryBundlesProductsTF, amazonBundlesProductsSI, groceryBundlesProductsSI,
+        amazonBundlesProductsSF, groceryBundlesProductsSF);
 
   }
 }

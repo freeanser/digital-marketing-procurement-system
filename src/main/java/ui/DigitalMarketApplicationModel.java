@@ -12,6 +12,7 @@ import model.OrderManagement.MasterOrderList;
 import model.OrderManagement.MasterOrderReport;
 import model.OrderManagement.MasterSolutionOrderList;
 import model.ProductManagement.Product;
+import model.ProductManagement.SolutionOffer;
 import model.ProductManagement.SolutionOfferCatalog;
 import model.Supplier.SupplierDirectory;
 
@@ -36,6 +37,15 @@ public class DigitalMarketApplicationModel {
   private ArrayList<Product> amazonBundlesProducts;
   private ArrayList<Product> groceryBundlesProducts;
 
+  private SolutionOffer amazonBundlesProductsTI;
+  private SolutionOffer groceryBundlesProductsTI;
+  private SolutionOffer amazonBundlesProductsTF;
+  private SolutionOffer groceryBundlesProductsTF;
+  private SolutionOffer amazonBundlesProductsSI;
+  private SolutionOffer groceryBundlesProductsSI;
+  private SolutionOffer amazonBundlesProductsSF;
+  private SolutionOffer groceryBundlesProductsSF;
+
   public DigitalMarketApplicationModel(
       Business b,
       SupplierDirectory sd,
@@ -47,7 +57,11 @@ public class DigitalMarketApplicationModel {
       Market marketStudents, Channel channelInstagram, Channel channelFacebook, MarketChannelAssignment ti,
       MarketChannelAssignment tf, MarketChannelAssignment si, MarketChannelAssignment sf,
       ArrayList<Product> allProducts, ArrayList<Product> amazonBundlesProducts,
-      ArrayList<Product> groceryBundlesProducts) {
+      ArrayList<Product> groceryBundlesProducts, SolutionOffer amazonBundlesProductsTI,
+      SolutionOffer groceryBundlesProductsTI, SolutionOffer amazonBundlesProductsTF,
+      SolutionOffer groceryBundlesProductsTF, SolutionOffer amazonBundlesProductsSI,
+      SolutionOffer groceryBundlesProductsSI, SolutionOffer amazonBundlesProductsSF,
+      SolutionOffer groceryBundlesProductsSF) {
     this.business = b;
     this.sd = sd;
     this.mol = mol;
@@ -67,6 +81,48 @@ public class DigitalMarketApplicationModel {
     this.allProducts = allProducts;
     this.amazonBundlesProducts = amazonBundlesProducts;
     this.groceryBundlesProducts = groceryBundlesProducts;
+
+    this.amazonBundlesProductsTI = amazonBundlesProductsTI;
+    this.groceryBundlesProductsTI = groceryBundlesProductsTI;
+    this.amazonBundlesProductsTF = amazonBundlesProductsTF;
+    this.groceryBundlesProductsTF = groceryBundlesProductsTF;
+    this.amazonBundlesProductsSI = amazonBundlesProductsSI;
+    this.groceryBundlesProductsSI = groceryBundlesProductsSI;
+    this.amazonBundlesProductsSF = amazonBundlesProductsSF;
+    this.groceryBundlesProductsSF = groceryBundlesProductsSF;
+
+  }
+
+  public SolutionOffer getAmazonBundlesProductsTI() {
+    return amazonBundlesProductsTI;
+  }
+
+  public SolutionOffer getGroceryBundlesProductsTI() {
+    return groceryBundlesProductsTI;
+  }
+
+  public SolutionOffer getAmazonBundlesProductsTF() {
+    return amazonBundlesProductsTF;
+  }
+
+  public SolutionOffer getGroceryBundlesProductsTF() {
+    return groceryBundlesProductsTF;
+  }
+
+  public SolutionOffer getAmazonBundlesProductsSI() {
+    return amazonBundlesProductsSI;
+  }
+
+  public SolutionOffer getGroceryBundlesProductsSI() {
+    return groceryBundlesProductsSI;
+  }
+
+  public SolutionOffer getAmazonBundlesProductsSF() {
+    return amazonBundlesProductsSF;
+  }
+
+  public SolutionOffer getGroceryBundlesProductsSF() {
+    return groceryBundlesProductsSF;
   }
 
   public MasterSolutionOrderList getMasterSolutionOrderList() {

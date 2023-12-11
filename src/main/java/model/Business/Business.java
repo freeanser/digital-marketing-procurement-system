@@ -67,6 +67,7 @@ public class Business {
 
     }
 
+    // 2-4: Autogenerate sales orders
     public static void createABusinessAndSolutions(Business business, int soOrderCount, int soItemCount,
             SolutionOffer solutionOffer) {
 
