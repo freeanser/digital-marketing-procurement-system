@@ -15,9 +15,9 @@ public class SolutionSummary {
   int totalSalesRevenues;
   int SolutionOrderRevenues;
 
-  public SolutionSummary(Business b, SolutionOrder so, SolutionOffer solutionOffer) {
+  public SolutionSummary(Business b, SolutionOffer solutionOffer) {
     business = b;
-    solutionOrder = so;
+    // solutionOrder = so;
     this.solutionOffer = solutionOffer;
   }
 

@@ -48,15 +48,16 @@ public class MasterSolutionOrderList {
 
   }
 
-  public SolutionReport generateSuppliererformanceReport(String sortingRule, Business business) {
-    SolutionReport SupplierReport = new SolutionReport(sortingRule);
+  // public SolutionReport generateSuppliererformanceReport(String sortingRule,
+  // Business business) {
+  // SolutionReport SupplierReport = new SolutionReport(sortingRule);
 
-    for (SolutionOrder s : solutionOrders) {
-      SolutionSummary ss = new SolutionSummary(business, s, solutionOffer);
+  // for (SolutionOrder s : solutionOrders) {
+  // SolutionSummary ss = new SolutionSummary(business, solutionOffer);
 
-      SupplierReport.addSupplierSummary(ss);
-    }
-    return SupplierReport;
-  }
+  // SolutionReport.addSolutionSummary(ss);
+  // }
+  // return SolutionReport;
+  // }
 
 }

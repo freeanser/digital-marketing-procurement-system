@@ -11,6 +11,8 @@ import java.util.Random;
 import java.util.Set;
 
 import model.MarketModel.MarketChannelAssignment;
+import model.OrderManagement.SolutionOfferOrderItem;
+import model.Business.*;
 
 /**
  *
@@ -76,6 +78,18 @@ public class SolutionOfferCatalog {
             totalSales += salesVolume;
         }
         return totalSales;
+    }
+
+    // Generate SolutionOffer formance Report
+    public SolutionOfferReport generateSolutionOfferReport(String sortingRule, Business business) {
+        SolutionOfferReport solutionOfferReport = new SolutionOfferReport(sortingRule);
+
+        for (SolutionOffer so : solutionoffers) {
+
+            SolutionOfferSummary sos = new SolutionOfferSummary(so, business);
+            solutionOfferReport.addSolutionOfferSummary(sos);
+        }
+        return solutionOfferReport;
     }
 
 }

@@ -11,16 +11,13 @@ import java.util.List;
 import model.Advertisement.Advertisement;
 import model.Advertisement.AdvertisementCatalog;
 
-/**
- *
- * @author kal bugrara
- */
 public class MarketChannelAssignment {
 
     Market market;
     Channel channel;
     Advertisement advertisement;
     Double AdvertisingBudget;
+
     private static AdvertisementCatalog advertisementCatalog = new AdvertisementCatalog();
 
     public MarketChannelAssignment(Market m, Channel c, Double ab) {
