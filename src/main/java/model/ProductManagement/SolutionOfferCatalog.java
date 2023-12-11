@@ -37,8 +37,9 @@ public class SolutionOfferCatalog {
         return type;
     }
 
-    public SolutionOffer newSolutionOffer(MarketChannelAssignment m, ArrayList<Product> ps, int price) {
-        SolutionOffer so = new SolutionOffer(m, ps, price);
+    public SolutionOffer newSolutionOffer(String name, MarketChannelAssignment m, ArrayList<Product> ps, int price) {
+
+        SolutionOffer so = new SolutionOffer(name, m, ps, price);
         solutionoffers.add(so);
         return so;
     }

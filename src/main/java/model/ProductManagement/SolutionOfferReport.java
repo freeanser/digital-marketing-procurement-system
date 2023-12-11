@@ -27,16 +27,16 @@ public class SolutionOfferReport {
     System.out.println("Sorting Rule: " + sortingRule);
     System.out.println("Solution Offer Summary List: ");
     for (SolutionOfferSummary sos : solutionOfferSummaryList) {
-      // print market
-      System.out.println("Market: " + sos.getMarket().getName());
 
-      // print channel
-      System.out.println("Channel: " + sos.getChannel().getName());
+      StringBuilder sb = new StringBuilder();
+      sb.append("Market: " + sos.getMarket().getName() + "\n");
+      sb.append("Channel: " + sos.getChannel().getName() + "\n");
+      sb.append("Advertisement: " + sos.getAdvertisement() + "\n");
+      sb.append("Solution Offer Name: " + sos.getName() + "\n");
+      sb.append("Total Revenue: " + sos.getTotalRevenue() + "\n");
+      sb.append("\n");
 
-      // print advertisement
-      System.out.println("Advertisement: " + sos.getAdvertisement());
-
-      System.out.println("Total Revenue: " + sos.getTotalRevenue());
+      System.out.println(sb.toString());
     }
   }
 

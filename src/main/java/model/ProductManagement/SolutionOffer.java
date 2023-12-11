@@ -19,6 +19,7 @@ import model.OrderManagement.SolutionOfferOrderItem;
  * @author kal bugrara
  */
 public class SolutionOffer {
+    String name;
     ArrayList<Product> products;
     int price;// floor, ceiling, and target ideas
     MarketChannelAssignment marketChannelComb;
@@ -30,11 +31,16 @@ public class SolutionOffer {
     // products = new ArrayList<Product>();
     // }
 
-    public SolutionOffer(MarketChannelAssignment m, ArrayList<Product> ps, int price) {
+    public SolutionOffer(String name, MarketChannelAssignment m, ArrayList<Product> ps, int price) {
+        this.name = name;
         marketChannelComb = m;
         products = ps;
         solutionOfferOrderItems = new ArrayList<SolutionOfferOrderItem>();
         this.price = price; // total price of the solution offer
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void addProduct(Product p) {

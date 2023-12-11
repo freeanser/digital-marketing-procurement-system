@@ -240,10 +240,8 @@ public class DigitalMarketingApplication {
   // Handle teacher & facebook
   public void handleTeacherFacebook(Scanner sc) {
     // TF
-    SolutionOffer amazonBundlesProductsTF = model.getSolutionoffercatalog().newSolutionOffer(model.getTf(),
-        model.getAmazonBundlesProducts(), 1770);
-    SolutionOffer groceryBundlesProductsTF = model.getSolutionoffercatalog().newSolutionOffer(model.getTf(),
-        model.getGroceryBundlesProducts(), 1880);
+    SolutionOffer amazonBundlesProductsTF = model.getAmazonBundlesProductsTF();
+    SolutionOffer groceryBundlesProductsTF = model.getGroceryBundlesProductsTF();
     System.out.println("1. Amazon Bundles Products");
     System.out.println("2. Grocery Bundles Products");
     System.out.println("3. Previous Page");
@@ -334,10 +332,8 @@ public class DigitalMarketingApplication {
   // Handle student & instagram
   public void handleStudentInstagram(Scanner sc) {
     // SI
-    SolutionOffer amazonBundlesProductsSI = model.getSolutionoffercatalog().newSolutionOffer(model.getSi(),
-        model.getAmazonBundlesProducts(), 1005);
-    SolutionOffer groceryBundlesProductsSI = model.getSolutionoffercatalog().newSolutionOffer(model.getSi(),
-        model.getGroceryBundlesProducts(), 999);
+    SolutionOffer amazonBundlesProductsSI = model.getAmazonBundlesProductsSI();
+    SolutionOffer groceryBundlesProductsSI = model.getGroceryBundlesProductsSI();
     System.out.println("1. Amazon Bundles Products");
     System.out.println("2. Grocery Bundles Products");
     System.out.println("3. Previous Page");
@@ -385,10 +381,8 @@ public class DigitalMarketingApplication {
   // Handle student & facebook
   public void handleStudentFacebook(Scanner sc) {
     // SF
-    SolutionOffer amazonBundlesProductsSF = model.getSolutionoffercatalog().newSolutionOffer(model.getSf(),
-        model.getAmazonBundlesProducts(), 1050);
-    SolutionOffer groceryBundlesProductsSF = model.getSolutionoffercatalog().newSolutionOffer(model.getSf(),
-        model.getGroceryBundlesProducts(), 1030);
+    SolutionOffer amazonBundlesProductsSF = model.getAmazonBundlesProductsSF();
+    SolutionOffer groceryBundlesProductsSF = model.getGroceryBundlesProductsSF();
     System.out.println("1. Amazon Bundles Products");
     System.out.println("2. Grocery Bundles Products");
     System.out.println("3. Previous Page");
@@ -883,47 +877,6 @@ public class DigitalMarketingApplication {
     }
   }
 
-  // Handle Reports Option
-  // public void handleReportsOption(Scanner sc) {
-
-  // System.out.println(
-  // "This is the report to enable management to know sales revenues by market,
-  // channel, ads, and solution bundles.");
-  // int totalSales = model.getSolutionoffercatalog().totalSalesRevenues();
-  // System.out.println("Total Sales Revenues: $" + totalSales);
-
-  // System.out.println("What's the report you would like to check? Please pick an
-  // option");
-  // System.out.println("1. ");
-  // System.out.println("2. ");
-  // System.out.println("3. Exit");
-
-  // String input = sc.next();
-
-  // // 1.
-  // if (input.equals("1")) {
-  // SolutionOfferReport Report =
-  // model.getSolutionoffercatalog().generateSolutionOfferReport("Total Sales",
-  // model.getBusiness());
-  // Report.printSolutionOfferReport();
-  // }
-
-  // // 2.
-  // if (input.equals("2")) {
-
-  // }
-
-  // if (input.equals("3")) {
-  // System.out.println("Thank you, have a nice day.");
-  // sc.close();
-  // }
-  // }
-
-  // SolutionOffer Generate
-  public static void solutionOfferGenerate() {
-
-  }
-
   public static DigitalMarketApplicationModel populateModel() {
     Business business = ConfigureABusiness.createABusinessAndLoadALotOfData("Xerox", 50, 10, 30, 100, 10);
     SupplierDirectory sd = business.getSupplierDirectory();
@@ -955,22 +908,30 @@ public class DigitalMarketingApplication {
 
     // solution offer
     // // TI
-    SolutionOffer amazonBundlesProductsTI = solutionoffercatalog.newSolutionOffer(ti,
+    SolutionOffer amazonBundlesProductsTI = solutionoffercatalog.newSolutionOffer(
+        "Amazon Bundles Products for Teachers on Instagram", ti,
         amazonBundlesProducts, 1000);
-    SolutionOffer groceryBundlesProductsTI = solutionoffercatalog.newSolutionOffer(ti, groceryBundlesProducts,
+    SolutionOffer groceryBundlesProductsTI = solutionoffercatalog.newSolutionOffer(
+        "Grocery Bundles Products for Teachers on Instagram", ti, groceryBundlesProducts,
         1370);
 
     // TF
-    SolutionOffer amazonBundlesProductsTF = solutionoffercatalog.newSolutionOffer(tf, amazonBundlesProducts, 1770);
-    SolutionOffer groceryBundlesProductsTF = solutionoffercatalog.newSolutionOffer(tf, groceryBundlesProducts, 1880);
+    SolutionOffer amazonBundlesProductsTF = solutionoffercatalog
+        .newSolutionOffer("Amazon Bundles Products for Teachers on Facebook", tf, amazonBundlesProducts, 1770);
+    SolutionOffer groceryBundlesProductsTF = solutionoffercatalog
+        .newSolutionOffer("Grocery Bundles Products for Teachers on Facebook", tf, groceryBundlesProducts, 1880);
 
     // SI
-    SolutionOffer amazonBundlesProductsSI = solutionoffercatalog.newSolutionOffer(si, amazonBundlesProducts, 1005);
-    SolutionOffer groceryBundlesProductsSI = solutionoffercatalog.newSolutionOffer(si, groceryBundlesProducts, 999);
+    SolutionOffer amazonBundlesProductsSI = solutionoffercatalog
+        .newSolutionOffer("Amazon Bundles Products for Students on Instagram", si, amazonBundlesProducts, 1005);
+    SolutionOffer groceryBundlesProductsSI = solutionoffercatalog
+        .newSolutionOffer("Grocery Bundles Products for Students on Instagram", si, groceryBundlesProducts, 999);
 
     // SF
-    SolutionOffer amazonBundlesProductsSF = solutionoffercatalog.newSolutionOffer(sf, amazonBundlesProducts, 1050);
-    SolutionOffer groceryBundlesProductsSF = solutionoffercatalog.newSolutionOffer(sf, groceryBundlesProducts, 1030);
+    SolutionOffer amazonBundlesProductsSF = solutionoffercatalog
+        .newSolutionOffer("Amazon Bundles Products for Students on Facebook", sf, amazonBundlesProducts, 1050);
+    SolutionOffer groceryBundlesProductsSF = solutionoffercatalog
+        .newSolutionOffer("Grocery Bundles Products for Students on Facebook", sf, groceryBundlesProducts, 1030);
 
     // Solution Order and Order Item
 
