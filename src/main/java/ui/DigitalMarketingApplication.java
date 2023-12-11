@@ -469,33 +469,28 @@ public class DigitalMarketingApplication {
     System.out.println("This is the list of the Sales Orders");
     System.out.println("What's the report you would like to check? Please pick an option");
     System.out.println("1. Total Sales");
-    System.out.println("2. What Market");
-    System.out.println("3. Advertisement");
-    System.out.println("4. Solution Offer");
-    System.out.println("5. Exit");
+    System.out.println("2. What Market and Channel?");
+    System.out.println("3. Previous Page");
+    System.out.println("4. Exit");
 
     String input = sc.next();
 
-    // 1.
+    // 1. Total Sales
     if (input.equals("1")) {
       int totalSales = model.getSolutionoffercatalog().totalSalesRevenues();
       System.out.println("Total Sales Revenues: $" + totalSales);
     }
 
-    // 2.
+    // 2. What Market and Channel?
     if (input.equals("2")) {
       ManagingMarketOption(sc);
     }
-    // 3.
+    // 3. Previous Page
     if (input.equals("3")) {
-
+      renderMainMenuOptions(sc);
     }
-    // 4.
+    // 4. Exit
     if (input.equals("4")) {
-
-    }
-    // 5.
-    if (input.equals("5")) {
       System.out.println("Thank you, have a nice day.");
       sc.close();
     }
@@ -508,7 +503,8 @@ public class DigitalMarketingApplication {
     System.out.println("What market you are looking for? Please pick an option:");
     System.out.println("1. Market Teacher");
     System.out.println("2. Market Student");
-    System.out.println("3. Exit");
+    System.out.println("3. Previous Page");
+    System.out.println("4. Exit");
 
     String input = sc.next();
 
@@ -522,14 +518,19 @@ public class DigitalMarketingApplication {
       ManagingStudentOption(sc, model.getMarketStudents());
     }
 
-    // 3. Exit
+    // 3. Previous Page
     if (input.equals("3")) {
+      SalesOrdersOption(sc);
+    }
+
+    // 4. Exit
+    if (input.equals("4")) {
       System.out.println("Thank you, have a nice day.");
       sc.close();
     }
 
     // if user press other keys
-    if (!input.equals("1") && !input.equals("2") && !input.equals("3")) {
+    if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
       System.out.println("Please enter a valid option.");
 
       ManagingMarketOption(sc);
@@ -645,10 +646,8 @@ public class DigitalMarketingApplication {
   // Handle managing teacher & facebook
   public void ManagingTeacherFacebook(Scanner sc) {
     // TF
-    SolutionOffer amazonBundlesProductsTF = model.getSolutionoffercatalog().newSolutionOffer(model.getTf(),
-        model.getAmazonBundlesProducts(), 1770);
-    SolutionOffer groceryBundlesProductsTF = model.getSolutionoffercatalog().newSolutionOffer(model.getTf(),
-        model.getGroceryBundlesProducts(), 1880);
+    SolutionOffer amazonBundlesProductsTF = model.getAmazonBundlesProductsTF();
+    SolutionOffer groceryBundlesProductsTF = model.getGroceryBundlesProductsTF();
     System.out.println("Check ads and solution bundles. Please pick an option");
     System.out.println("1. Amazon Bundles Products");
     System.out.println("2. Grocery Bundles Products");
@@ -661,14 +660,19 @@ public class DigitalMarketingApplication {
     if (input.equals("1")) {
       model.getTf().printInfo();
 
-      System.out.println("Including all these items, the total cost is only $" + amazonBundlesProductsTF.getPrice()
+      System.out.println("Including all these items, the total cost is only $" +
+          amazonBundlesProductsTF.getPrice()
           + "! Act fast before it's gone! ");
       amazonBundlesProductsTF.findProductsName();
 
       int price = amazonBundlesProductsTF.getPrice();
+      System.out.println("The price is $" + price);
+
       int quantity = amazonBundlesProductsTF.getProducts().size();
+      System.out.println("The quantity is " + quantity);
 
       int total = amazonBundlesProductsTF.getSalesVolume(price, quantity);
+      System.out.println("The total is $" + total);
 
       System.out.println("The Sales Revenues by Market Teacher, Channel Facebook, Ads Amazon Bundles Products is $"
           + total);
@@ -752,10 +756,8 @@ public class DigitalMarketingApplication {
   // Handle managing student & instagram
   public void ManagingStudentInstagram(Scanner sc) {
     // SI
-    SolutionOffer amazonBundlesProductsSI = model.getSolutionoffercatalog().newSolutionOffer(model.getSi(),
-        model.getAmazonBundlesProducts(), 1005);
-    SolutionOffer groceryBundlesProductsSI = model.getSolutionoffercatalog().newSolutionOffer(model.getSi(),
-        model.getGroceryBundlesProducts(), 999);
+    SolutionOffer amazonBundlesProductsSI = model.getAmazonBundlesProductsSI();
+    SolutionOffer groceryBundlesProductsSI = model.getGroceryBundlesProductsSI();
     System.out.println("Check ads and solution bundles. Please pick an option");
     System.out.println("1. Amazon Bundles Products");
     System.out.println("2. Grocery Bundles Products");
@@ -800,7 +802,7 @@ public class DigitalMarketingApplication {
 
     // 3. Previous Page
     if (input.equals("3"))
-      handleStudentOption(sc, model.getMarketStudents());
+      ManagingStudentOption(sc, model.getMarketStudents());
 
     // 4. Exit
     if (input.equals("4")) {
@@ -820,10 +822,8 @@ public class DigitalMarketingApplication {
   public void ManagingStudentFacebook(Scanner sc) {
 
     // SF
-    SolutionOffer amazonBundlesProductsSF = model.getSolutionoffercatalog().newSolutionOffer(model.getSf(),
-        model.getAmazonBundlesProducts(), 1050);
-    SolutionOffer groceryBundlesProductsSF = model.getSolutionoffercatalog().newSolutionOffer(model.getSf(),
-        model.getGroceryBundlesProducts(), 1030);
+    SolutionOffer amazonBundlesProductsSF = model.getAmazonBundlesProductsSF();
+    SolutionOffer groceryBundlesProductsSF = model.getGroceryBundlesProductsSF();
     System.out.println("Check ads and solution bundles. Please pick an option");
     System.out.println("1. Amazon Bundles Products");
     System.out.println("2. Grocery Bundles Products");

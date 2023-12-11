@@ -110,10 +110,12 @@ public class SolutionOffer {
     // }
 
     public int getSalesVolume(int price, int quantity) {
-        // price = this.getPrice();
+
         int sum = 0;
         for (SolutionOfferOrderItem soi : solutionOfferOrderItems) {
+
             sum += soi.getRandomSOITotal(price, quantity);
+            // System.out.println("getSalesVolume - sum: " + sum);
         }
         return sum;
     }
