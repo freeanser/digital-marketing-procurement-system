@@ -707,14 +707,175 @@ public class DigitalMarketingApplication {
   // Handle managing Student Option
   public void ManagingStudentOption(Scanner sc, Market marketStudents) {
 
+    System.out.println("This is the list of the " + marketStudents.getCustomersID());
+    System.out.println("What's the channel you use? Please pick an option");
+    System.out.println("1. Instagram");
+    System.out.println("2. Facebook");
+    System.out.println("3. Previous Page");
+    System.out.println("4. Exit");
+
+    String input = sc.next();
+
+    // 1. Market Student and choose 1. Instagram
+    if (input.equals("1")) {
+      ManagingStudentInstagram(sc);
+    }
+
+    // 1. Market Student and choose 2. Facebook
+    if (input.equals("2")) {
+      ManagingStudentFacebook(sc);
+    }
+
+    // 3. Previous Page
+    if (input.equals("3"))
+      ManagingMarketOption(sc);
+
+    // 4. Exit
+    if (input.equals("4")) {
+      System.out.println("Thank you, have a nice day.");
+      sc.close();
+    }
+
+    // if user press other keys
+    if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
+      System.out.println("Please enter a valid option.");
+
+      ManagingStudentOption(sc, marketStudents);
+    }
   }
 
   // Handle managing student & instagram
   public void ManagingStudentInstagram(Scanner sc) {
+    // SI
+    SolutionOffer amazonBundlesProductsSI = model.getSolutionoffercatalog().newSolutionOffer(model.getSi(),
+        model.getAmazonBundlesProducts(), 1005);
+    SolutionOffer groceryBundlesProductsSI = model.getSolutionoffercatalog().newSolutionOffer(model.getSi(),
+        model.getGroceryBundlesProducts(), 999);
+    System.out.println("Check ads and solution bundles. Please pick an option");
+    System.out.println("1. Amazon Bundles Products");
+    System.out.println("2. Grocery Bundles Products");
+    System.out.println("3. Previous Page");
+    System.out.println("4. Exit");
+
+    String input = sc.next();
+
+    // 1. Amazon Bundles Products
+    if (input.equals("1")) {
+      model.getSi().printInfo();
+
+      System.out.println("Including all these items, the total cost is only $" + amazonBundlesProductsSI.getPrice()
+          + "! Act fast before it's gone! ");
+      amazonBundlesProductsSI.findProductsName();
+
+      int price = amazonBundlesProductsSI.getPrice();
+      int quantity = amazonBundlesProductsSI.getProducts().size();
+
+      int total = amazonBundlesProductsSI.getSalesVolume(price, quantity);
+
+      System.out.println("The Sales Revenues by Market Student, Channel Instagram, Ads Amazon Bundles Products is $"
+          + total);
+    }
+
+    // 2. Grocery Bundles Products
+    if (input.equals("2")) {
+      model.getSi().printInfo();
+
+      System.out.println("Including all these items, the total cost is only $" + groceryBundlesProductsSI.getPrice()
+          + "! Act fast before it's gone! ");
+      groceryBundlesProductsSI.finProductsIngredientName();
+
+      int price = groceryBundlesProductsSI.getPrice();
+      int quantity = groceryBundlesProductsSI.getProducts().size();
+
+      int total = groceryBundlesProductsSI.getSalesVolume(price, quantity);
+
+      System.out.println("The Sales Revenues by Market Student, Channel Instagram, Ads Grocery Bundles Products is $"
+          + total);
+    }
+
+    // 3. Previous Page
+    if (input.equals("3"))
+      handleStudentOption(sc, model.getMarketStudents());
+
+    // 4. Exit
+    if (input.equals("4")) {
+      System.out.println("Thank you, have a nice day.");
+      sc.close();
+    }
+
+    // if user press other keys
+    if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
+      System.out.println("Please enter a valid option.");
+
+      handleStudentInstagram(sc);
+    }
   }
 
   // Handle managing student & facebook
   public void ManagingStudentFacebook(Scanner sc) {
+
+    // SF
+    SolutionOffer amazonBundlesProductsSF = model.getSolutionoffercatalog().newSolutionOffer(model.getSf(),
+        model.getAmazonBundlesProducts(), 1050);
+    SolutionOffer groceryBundlesProductsSF = model.getSolutionoffercatalog().newSolutionOffer(model.getSf(),
+        model.getGroceryBundlesProducts(), 1030);
+    System.out.println("Check ads and solution bundles. Please pick an option");
+    System.out.println("1. Amazon Bundles Products");
+    System.out.println("2. Grocery Bundles Products");
+    System.out.println("3. Previous Page");
+    System.out.println("4. Exit");
+
+    String input = sc.next();
+
+    // 1. Amazon Bundles Products
+    if (input.equals("1")) {
+      model.getSf().printInfo();
+
+      System.out.println("Including all these items, the total cost is only $" + amazonBundlesProductsSF.getPrice()
+          + "! Act fast before it's gone! ");
+      amazonBundlesProductsSF.findProductsName();
+
+      int price = amazonBundlesProductsSF.getPrice();
+      int quantity = amazonBundlesProductsSF.getProducts().size();
+
+      int total = amazonBundlesProductsSF.getSalesVolume(price, quantity);
+
+      System.out.println("The Sales Revenues by Market Student, Channel Facebook, Ads Amazon Bundles Products is $"
+          + total);
+    }
+
+    // 2. Grocery Bundles Products
+    if (input.equals("2")) {
+      model.getSf().printInfo();
+
+      System.out.println("Including all these items, the total cost is only $" + groceryBundlesProductsSF.getPrice()
+          + "! Act fast before it's gone! ");
+      groceryBundlesProductsSF.finProductsIngredientName();
+
+      int price = groceryBundlesProductsSF.getPrice();
+      int quantity = groceryBundlesProductsSF.getProducts().size();
+
+      int total = groceryBundlesProductsSF.getSalesVolume(price, quantity);
+
+      System.out.println("The Sales Revenues by Market Student, Channel Facebook, Ads Grocery Bundles Products is $"
+          + total);
+    }
+
+    // 3. Previous Page
+    if (input.equals("3"))
+      handleStudentOption(sc, model.getMarketStudents());
+
+    // 4. Exit
+    if (input.equals("4")) {
+      System.out.println("Thank you, have a nice day.");
+      sc.close();
+    }
+
+    // if user press other keys
+    if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
+      System.out.println("Please enter a valid option.");
+      handleStudentFacebook(sc);
+    }
   }
 
   // Handle Reports Option
