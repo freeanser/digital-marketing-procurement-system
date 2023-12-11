@@ -15,7 +15,7 @@ public class SolutionOfferSummary {
   Channel channel;
   String advertisement;
 
-  Double totalRevenue;
+  int totalRevenue;
 
   public SolutionOfferSummary(SolutionOffer so, Business business) {
     solutionOffer = so;
@@ -25,7 +25,7 @@ public class SolutionOfferSummary {
     channel = marketChannel.getChannel();
     advertisement = marketChannel.getAdvertisingMessage();
 
-    totalRevenue = 0.0;
+    totalRevenue = so.getSalesVolume(so.getPrice(), so.getProducts().size());
 
   }
 
@@ -53,7 +53,7 @@ public class SolutionOfferSummary {
     return advertisement;
   }
 
-  public Double getTotalRevenue() {
+  public int getTotalRevenue() {
     return totalRevenue;
   }
 }

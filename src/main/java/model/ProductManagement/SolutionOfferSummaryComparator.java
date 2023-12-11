@@ -14,9 +14,9 @@ public class SolutionOfferSummaryComparator implements Comparator<SolutionOfferS
   @Override
   public int compare(SolutionOfferSummary o1, SolutionOfferSummary o2) {
     if (sortingRule.equals("Total Sales")) {
-      return o1.getTotalRevenue().compareTo(o2.getTotalRevenue());
+      return Integer.compare(o1.getTotalRevenue(), o2.getTotalRevenue());
     }
 
-    return (-1) * Double.compare(o1.getTotalRevenue(), o2.getTotalRevenue());
+    return (-1) * Integer.compare(o1.getTotalRevenue(), o2.getTotalRevenue());
   }
 }

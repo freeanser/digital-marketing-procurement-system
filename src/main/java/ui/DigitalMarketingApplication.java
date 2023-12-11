@@ -22,6 +22,7 @@ import model.MarketModel.Channel;
 import model.MarketModel.ChannelCatalog;
 import model.MarketModel.MarketChannelAssignment;
 import model.ProductManagement.SolutionOfferCatalog;
+import model.ProductManagement.SolutionOfferReport;
 import model.ProductManagement.SolutionOffer;
 import model.OrderManagement.MasterOrderList;
 import model.OrderManagement.MasterOrderReport;
@@ -52,9 +53,11 @@ public class DigitalMarketingApplication {
 
     // 1. Populate the model
     DigitalMarketingApplication application = new DigitalMarketingApplication(model);
-    Faker faker = new Faker();
-    Business business = ConfigureABusiness.createABusinessAndLoadALotOfData(faker.company().name(), 50, 10, 300, 100,
-        10);
+    // Faker faker = new Faker();
+    // Business business =
+    // ConfigureABusiness.createABusinessAndLoadALotOfData(faker.company().name(),
+    // 50, 10, 300, 100,
+    // 10);
 
     // 2. Maybe some interaction with the user (optional)
 
@@ -84,7 +87,9 @@ public class DigitalMarketingApplication {
 
     // 3. I am a market manager and want to see the reports
     if (input.equals("3")) {
-      System.out.println("Please pick an option:");
+      SolutionOfferReport Report = model.getSolutionoffercatalog().generateSolutionOfferReport("Total Sales",
+          model.getBusiness());
+      Report.printSolutionOfferReport();
     }
 
     // 4. Exit
@@ -879,35 +884,40 @@ public class DigitalMarketingApplication {
   }
 
   // Handle Reports Option
-  public void handleReportsOption(Scanner sc, Market marketStudents) {
+  // public void handleReportsOption(Scanner sc) {
 
-    System.out.println(
-        "This is the report to enable management to know sales revenues by market, channel, ads, and solution bundles.");
-    int totalSales = model.getSolutionoffercatalog().totalSalesRevenues();
-    System.out.println("Total Sales Revenues: $" + totalSales);
+  // System.out.println(
+  // "This is the report to enable management to know sales revenues by market,
+  // channel, ads, and solution bundles.");
+  // int totalSales = model.getSolutionoffercatalog().totalSalesRevenues();
+  // System.out.println("Total Sales Revenues: $" + totalSales);
 
-    System.out.println("What's the report you would like to check? Please pick an option");
-    System.out.println("1. ");
-    System.out.println("2. ");
-    System.out.println("3. Exit");
+  // System.out.println("What's the report you would like to check? Please pick an
+  // option");
+  // System.out.println("1. ");
+  // System.out.println("2. ");
+  // System.out.println("3. Exit");
 
-    String input = sc.next();
+  // String input = sc.next();
 
-    // 1.
-    if (input.equals("1")) {
+  // // 1.
+  // if (input.equals("1")) {
+  // SolutionOfferReport Report =
+  // model.getSolutionoffercatalog().generateSolutionOfferReport("Total Sales",
+  // model.getBusiness());
+  // Report.printSolutionOfferReport();
+  // }
 
-    }
+  // // 2.
+  // if (input.equals("2")) {
 
-    // 2.
-    if (input.equals("2")) {
+  // }
 
-    }
-
-    if (input.equals("3")) {
-      System.out.println("Thank you, have a nice day.");
-      sc.close();
-    }
-  }
+  // if (input.equals("3")) {
+  // System.out.println("Thank you, have a nice day.");
+  // sc.close();
+  // }
+  // }
 
   // SolutionOffer Generate
   public static void solutionOfferGenerate() {
@@ -981,8 +991,8 @@ public class DigitalMarketingApplication {
     Business.createABusinessAndSolutions(business, 10, 10, groceryBundlesProductsSF);
 
     return new DigitalMarketApplicationModel(business, sd, mol, orderReport, marketCatalog, channelCatalog,
-        solutionoffercatalog,
-        masterSolutionOrderList, marketTeachers, marketStudents, channelInstagram, channelFacebook, ti, tf, si, sf,
+        solutionoffercatalog, masterSolutionOrderList, marketTeachers, marketStudents, channelInstagram,
+        channelFacebook, ti, tf, si, sf,
         allProducts, amazonBundlesProducts, groceryBundlesProducts, amazonBundlesProductsTI, groceryBundlesProductsTI,
         amazonBundlesProductsTF, groceryBundlesProductsTF, amazonBundlesProductsSI, groceryBundlesProductsSI,
         amazonBundlesProductsSF, groceryBundlesProductsSF);

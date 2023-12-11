@@ -13,11 +13,12 @@ public class MasterSolutionOrderList {
   ArrayList<SolutionOrder> solutionOrders;
   SolutionOffer solutionOffer;
 
-  public MasterSolutionOrderList(Business b, SolutionOffer so) {
+  // public MasterSolutionOrderList(Business b, SolutionOffer so) {
+  public MasterSolutionOrderList(Business b) {
 
     business = b;
     solutionOrders = new ArrayList<SolutionOrder>();
-    solutionOffer = so;
+    // solutionOffer = so;
 
   }
 

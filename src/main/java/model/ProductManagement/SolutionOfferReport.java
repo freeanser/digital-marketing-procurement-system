@@ -22,4 +22,22 @@ public class SolutionOfferReport {
 
   }
 
+  public void printSolutionOfferReport() {
+    System.out.println("Solution Offer Report");
+    System.out.println("Sorting Rule: " + sortingRule);
+    System.out.println("Solution Offer Summary List: ");
+    for (SolutionOfferSummary sos : solutionOfferSummaryList) {
+      // print market
+      System.out.println("Market: " + sos.getMarket().getName());
+
+      // print channel
+      System.out.println("Channel: " + sos.getChannel().getName());
+
+      // print advertisement
+      System.out.println("Advertisement: " + sos.getAdvertisement());
+
+      System.out.println("Total Revenue: " + sos.getTotalRevenue());
+    }
+  }
+
 }

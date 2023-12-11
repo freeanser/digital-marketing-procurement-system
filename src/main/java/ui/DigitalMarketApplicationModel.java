@@ -11,6 +11,7 @@ import model.MarketModel.MarketChannelAssignment;
 import model.OrderManagement.MasterOrderList;
 import model.OrderManagement.MasterOrderReport;
 import model.OrderManagement.MasterSolutionOrderList;
+import model.OrderManagement.MasterSolutionOrderList;
 import model.ProductManagement.Product;
 import model.ProductManagement.SolutionOffer;
 import model.ProductManagement.SolutionOfferCatalog;
@@ -91,6 +92,10 @@ public class DigitalMarketApplicationModel {
     this.amazonBundlesProductsSF = amazonBundlesProductsSF;
     this.groceryBundlesProductsSF = groceryBundlesProductsSF;
 
+  }
+
+  public Business getBusiness() {
+    return business;
   }
 
   public SolutionOffer getAmazonBundlesProductsTI() {
