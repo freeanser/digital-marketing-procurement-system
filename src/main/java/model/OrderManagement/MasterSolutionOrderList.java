@@ -11,11 +11,13 @@ public class MasterSolutionOrderList {
 
   Business business;
   ArrayList<SolutionOrder> solutionOrders;
+  SolutionOffer solutionOffer;
 
-  public MasterSolutionOrderList(Business b) {
+  public MasterSolutionOrderList(Business b, SolutionOffer so) {
 
     business = b;
     solutionOrders = new ArrayList<SolutionOrder>();
+    solutionOffer = so;
 
   }
 
@@ -25,6 +27,10 @@ public class MasterSolutionOrderList {
 
   public void setBusiness(Business business) {
     this.business = business;
+  }
+
+  public SolutionOffer getSolutionOffer() {
+    return solutionOffer;
   }
 
   public ArrayList<SolutionOrder> getSolutionOrders() {
@@ -40,6 +46,17 @@ public class MasterSolutionOrderList {
     solutionOrders.add(o);
     return o;
 
+  }
+
+  public SolutionReport generateSuppliererformanceReport(String sortingRule, Business business) {
+    SolutionReport SupplierReport = new SolutionReport(sortingRule);
+
+    for (SolutionOrder s : solutionOrders) {
+      SolutionSummary ss = new SolutionSummary(business, s, solutionOffer);
+
+      SupplierReport.addSupplierSummary(ss);
+    }
+    return SupplierReport;
   }
 
 }
