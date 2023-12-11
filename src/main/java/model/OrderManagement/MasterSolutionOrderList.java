@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import model.Business.Business;
+import model.CustomerManagement.CustomerProfile;
+import model.ProductManagement.SolutionOffer;
 
 public class MasterSolutionOrderList {
 
@@ -31,6 +33,13 @@ public class MasterSolutionOrderList {
 
   public void setSolutionOrders(ArrayList<SolutionOrder> solutionOrders) {
     this.solutionOrders = solutionOrders;
+  }
+
+  public SolutionOrder newSOOrder(CustomerProfile cp) {
+    SolutionOrder o = new SolutionOrder(cp, this);
+    solutionOrders.add(o);
+    return o;
+
   }
 
 }

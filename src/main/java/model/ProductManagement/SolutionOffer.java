@@ -11,6 +11,7 @@ import com.github.javafaker.Faker;
 
 import model.CustomerManagement.CustomerProfile;
 import model.MarketModel.MarketChannelAssignment;
+import model.OrderManagement.OrderItem;
 import model.OrderManagement.SolutionOfferOrderItem;
 
 /**
@@ -42,6 +43,10 @@ public class SolutionOffer {
 
     public void addProducts(ArrayList<Product> newproducts) {
         products.addAll(newproducts);
+    }
+
+    public ArrayList<Product> getProducts() {
+        return products;
     }
 
     public void findProductsName() {
@@ -93,6 +98,24 @@ public class SolutionOffer {
 
     public void addSolutionOfferOrderItem(SolutionOfferOrderItem sooi) {
         solutionOfferOrderItems.add(sooi);
+    }
+
+    // public int getSalesVolume(int price, int quantity) {
+    // // price = this.getPrice();
+    // int sum = 0;
+    // for (SolutionOfferOrderItem soi : solutionOfferOrderItems) {
+    // sum = sum + soi.getRandomSolutionOrderItemTotal(price, quantity);
+    // }
+    // return sum;
+    // }
+
+    public int getSalesVolume(int price, int quantity) {
+        // price = this.getPrice();
+        int sum = 0;
+        for (SolutionOfferOrderItem soi : solutionOfferOrderItems) {
+            sum += soi.getRandomSOITotal(price, quantity);
+        }
+        return sum;
     }
 
     public SolutionOfferCatalog getSolutionOfferCatalog() {

@@ -12,11 +12,14 @@ import com.github.javafaker.Faker;
 import model.CustomerManagement.CustomerDirectory;
 import model.CustomerManagement.CustomerProfile;
 import model.OrderManagement.MasterOrderList;
+import model.OrderManagement.MasterSolutionOrderList;
 import model.OrderManagement.Order;
+import model.OrderManagement.SolutionOrder;
 import model.Personnel.Person;
 import model.Personnel.PersonDirectory;
 import model.ProductManagement.Product;
 import model.ProductManagement.ProductCatalog;
+import model.ProductManagement.SolutionOffer;
 import model.Supplier.Supplier;
 import model.Supplier.SupplierDirectory;
 

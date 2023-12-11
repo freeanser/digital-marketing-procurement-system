@@ -10,6 +10,7 @@ import model.MarketModel.MarketCatalog;
 import model.MarketModel.MarketChannelAssignment;
 import model.OrderManagement.MasterOrderList;
 import model.OrderManagement.MasterOrderReport;
+import model.OrderManagement.MasterSolutionOrderList;
 import model.ProductManagement.Product;
 import model.ProductManagement.SolutionOfferCatalog;
 import model.Supplier.SupplierDirectory;
@@ -22,6 +23,7 @@ public class DigitalMarketApplicationModel {
   private MarketCatalog marketCatalog;
   private ChannelCatalog channelCatalog;
   private SolutionOfferCatalog solutionoffercatalog;
+  private MasterSolutionOrderList masterSolutionOrderList;
   private Market marketTeachers;
   private Market marketStudents;
   private Channel channelInstagram;
@@ -40,7 +42,8 @@ public class DigitalMarketApplicationModel {
       MasterOrderList mol,
       MasterOrderReport orderReport,
       MarketCatalog marketCatalog,
-      ChannelCatalog channelCatalog, SolutionOfferCatalog solutionoffercatalog, Market marketTeachers,
+      ChannelCatalog channelCatalog, SolutionOfferCatalog solutionoffercatalog,
+      MasterSolutionOrderList masterSolutionOrderList, Market marketTeachers,
       Market marketStudents, Channel channelInstagram, Channel channelFacebook, MarketChannelAssignment ti,
       MarketChannelAssignment tf, MarketChannelAssignment si, MarketChannelAssignment sf,
       ArrayList<Product> allProducts, ArrayList<Product> amazonBundlesProducts,
@@ -52,6 +55,7 @@ public class DigitalMarketApplicationModel {
     this.marketCatalog = marketCatalog;
     this.channelCatalog = channelCatalog;
     this.solutionoffercatalog = solutionoffercatalog;
+    this.masterSolutionOrderList = masterSolutionOrderList;
     this.marketTeachers = marketTeachers;
     this.marketStudents = marketStudents;
     this.channelInstagram = channelInstagram;
@@ -63,6 +67,10 @@ public class DigitalMarketApplicationModel {
     this.allProducts = allProducts;
     this.amazonBundlesProducts = amazonBundlesProducts;
     this.groceryBundlesProducts = groceryBundlesProducts;
+  }
+
+  public MasterSolutionOrderList getMasterSolutionOrderList() {
+    return masterSolutionOrderList;
   }
 
   public SolutionOfferCatalog getSolutionoffercatalog() {

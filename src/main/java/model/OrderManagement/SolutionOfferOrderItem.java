@@ -1,5 +1,7 @@
 package model.OrderManagement;
 
+import java.util.Random;
+
 import model.ProductManagement.Product;
 import model.ProductManagement.SolutionOffer;
 import model.OrderManagement.SolutionOrder;
@@ -41,6 +43,26 @@ public class SolutionOfferOrderItem {
 
   public void setQuantity(int quantity) {
     this.quantity = quantity;
+  }
+
+  static int getRandom(int lower, int upper) {
+    Random r = new Random();
+
+    // Make sure the random number is never 0
+    while (true) {
+      int randomInt = lower + r.nextInt(upper - lower);
+      if (randomInt != 0) {
+        return randomInt;
+      }
+    }
+  }
+
+  public int getRandomSOITotal(int price, int quantity) {
+    int randomPrice = getRandom((price - 20), (price + 20));
+    int randomQuantity = getRandom((quantity - 1), (quantity + 1));
+    int randomTotal = randomPrice * randomQuantity;
+    return randomTotal;
+
   }
 
   public SolutionOrder getSolutionOrder() {

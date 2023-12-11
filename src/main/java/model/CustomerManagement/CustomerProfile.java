@@ -28,9 +28,13 @@ public class CustomerProfile {
     // // at specific customers through a specific market and channel
     Person person;
 
-    public CustomerProfile(Person p) {
-        person = p;
-        orders = new ArrayList<Order>();
+    public CustomerProfile(Person person) {
+        // person = p;
+        // orders = new ArrayList<Order>();
+        this.person = person;
+        this.orders = new ArrayList<>();
+        this.solutionOrders = new ArrayList<>();
+        this.markets = new ArrayList<>();
     }
 
     public ArrayList<SolutionOrder> getSolutionOrders() {

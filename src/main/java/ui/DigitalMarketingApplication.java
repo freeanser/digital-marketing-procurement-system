@@ -6,7 +6,11 @@
 package ui;
 
 import java.util.Scanner;
+
+import com.github.javafaker.Faker;
+
 import java.util.ArrayList;
+import java.util.Random;
 
 import model.Business.Business;
 import model.Business.ConfigureABusiness;
@@ -21,6 +25,9 @@ import model.ProductManagement.SolutionOfferCatalog;
 import model.ProductManagement.SolutionOffer;
 import model.OrderManagement.MasterOrderList;
 import model.OrderManagement.MasterOrderReport;
+import model.OrderManagement.MasterSolutionOrderList;
+import model.OrderManagement.SolutionOfferOrderItem;
+import model.OrderManagement.SolutionOrder;
 import model.ProductManagement.ProductCatalog;
 import model.ProductManagement.Product;
 import model.ProductManagement.ProductsReport;
@@ -45,6 +52,9 @@ public class DigitalMarketingApplication {
 
     // 1. Populate the model
     DigitalMarketingApplication application = new DigitalMarketingApplication(model);
+    Faker faker = new Faker();
+    Business business = ConfigureABusiness.createABusinessAndLoadALotOfData(faker.company().name(), 50, 10, 300, 100,
+        10);
 
     // 2. Maybe some interaction with the user (optional)
 
@@ -55,14 +65,50 @@ public class DigitalMarketingApplication {
   public void renderMainMenuOptions(Scanner sc) {
 
     System.out.println("Welcome to join Education Sale! Please pick an option:");
+    System.out.println("1. I am a customer and want to buy products");
+    System.out.println("2. I am a market manager and want to see the sales orders");
+    System.out.println("3. I am a market manager and want to see the reports");
+    System.out.println("4. Exit");
+
+    String input = sc.next();
+
+    // 1. I am a customer and want to buy products
+    if (input.equals("1")) {
+      CustomerOption(sc);
+    }
+
+    // 2. I am a market manager and want to see the sales orders
+    if (input.equals("2")) {
+      SalesOrdersOption(sc);
+    }
+
+    // 3. I am a market manager and want to see the reports
+    if (input.equals("3")) {
+      System.out.println("Please pick an option:");
+    }
+
+    // 4. Exit
+    if (input.equals("4")) {
+      System.out.println("Thank you, have a nice day.");
+      sc.close();
+    }
+    if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
+      System.out.println("Please enter a valid option.");
+
+      renderMainMenuOptions(sc);
+    }
+  }
+
+  // Handle Customer Option
+  public void CustomerOption(Scanner sc) {
+
+    System.out.println("Welcome to join Education Sale! Please pick an option:");
     System.out.println("1. I am a teacher");
     System.out.println("2. I am an student");
     System.out.println("3. I want to see the reports");
     System.out.println("4. Exit");
 
     String input = sc.next();
-
-    // System.out.println(input);
 
     // 1. I am a teacher
     if (input.equals("1")) {
@@ -89,10 +135,7 @@ public class DigitalMarketingApplication {
 
       renderMainMenuOptions(sc);
     }
-
   }
-
-  // Handle Customer Option
 
   // Handle Teacher Option
   public void handleTeacherOption(Scanner sc, Market marketTeachers) {
@@ -386,9 +429,9 @@ public class DigitalMarketingApplication {
 
   }
 
-  private void confirmOrder(SolutionOffer so) {
-     model.addOrder
-  }
+  // private void confirmOrder(SolutionOffer so) {
+  // model.addOrder
+  // }
 
   // Handle buy it or not
   public void handleBuyOrNot(Scanner sc, SolutionOffer so) {
@@ -402,7 +445,7 @@ public class DigitalMarketingApplication {
     // 1. Yes
     if (input.equals("1")) {
       System.out.println("Thank you for your purchase! Have a nice day!");
-      confirmOrder(so);
+      // confirmOrder(so);
     }
 
     // 2. No
@@ -415,6 +458,61 @@ public class DigitalMarketingApplication {
       System.out.println("Thank you, have a nice day.");
       sc.close();
     }
+  }
+
+  // Handle Sales Orders Option
+  public void SalesOrdersOption(Scanner sc) {
+
+    System.out.println("This is the list of the Sales Orders");
+    System.out.println("What's the report you would like to check? Please pick an option");
+    System.out.println("1. Total Sales");
+    System.out.println("2. Market");
+    System.out.println("3. Channel");
+    System.out.println("4. Advertisement");
+    System.out.println("5. Solution Offer");
+    System.out.println("6. Exit");
+
+    String input = sc.next();
+
+    // 1.
+    if (input.equals("1")) {
+      // int totalSales = 0;
+      // for (SolutionOffer so : model.getSolutionoffercatalog().getSolutionoffers())
+      // {
+      // int price = so.getPrice();
+      // int size = so.getProducts().size();
+
+      // int salesVolume = so.getSalesVolume(price, size);
+
+      // totalSales += salesVolume;
+      // }
+
+      int totalSales = model.getSolutionoffercatalog().totalSalesRevenues();
+      System.out.println("Total Sales Revenues: $" + totalSales);
+    }
+
+    // 2.
+    if (input.equals("2")) {
+
+    }
+    // 3.
+    if (input.equals("3")) {
+
+    }
+    // 4.
+    if (input.equals("4")) {
+
+    }
+    // 5.
+    if (input.equals("5")) {
+
+    }
+    // 6.
+    if (input.equals("6")) {
+      System.out.println("Thank you, have a nice day.");
+      sc.close();
+    }
+
   }
 
   // Handle Reports Option
@@ -459,6 +557,7 @@ public class DigitalMarketingApplication {
     MarketCatalog marketCatalog = business.getMarketcatalog();
     ChannelCatalog channelCatalog = business.getChannelcatalog();
     SolutionOfferCatalog solutionoffercatalog = business.getSolutionoffercatalog();
+    MasterSolutionOrderList masterSolutionOrderList = business.getMastersolutionorderlist();
 
     // market
     Market marketTeachers = marketCatalog.newMarket("teacher");
@@ -498,8 +597,27 @@ public class DigitalMarketingApplication {
     SolutionOffer amazonBundlesProductsSF = solutionoffercatalog.newSolutionOffer(sf, amazonBundlesProducts, 1050);
     SolutionOffer groceryBundlesProductsSF = solutionoffercatalog.newSolutionOffer(sf, groceryBundlesProducts, 1030);
 
+    // Solution Order and Order Item
+
+    // TI
+    Business.createABusinessAndSolutions(business, 10, 10, amazonBundlesProductsTI);
+    Business.createABusinessAndSolutions(business, 10, 10, groceryBundlesProductsTI);
+
+    // TF
+    Business.createABusinessAndSolutions(business, 10, 10, amazonBundlesProductsTF);
+    Business.createABusinessAndSolutions(business, 10, 10, groceryBundlesProductsTF);
+
+    // SI
+    Business.createABusinessAndSolutions(business, 10, 10, amazonBundlesProductsSI);
+    Business.createABusinessAndSolutions(business, 10, 10, groceryBundlesProductsSI);
+
+    // SF
+    Business.createABusinessAndSolutions(business, 10, 10, amazonBundlesProductsSF);
+    Business.createABusinessAndSolutions(business, 10, 10, groceryBundlesProductsSF);
+
     return new DigitalMarketApplicationModel(business, sd, mol, orderReport, marketCatalog, channelCatalog,
-        solutionoffercatalog, marketTeachers, marketStudents, channelInstagram, channelFacebook, ti, tf, si, sf,
+        solutionoffercatalog,
+        masterSolutionOrderList, marketTeachers, marketStudents, channelInstagram, channelFacebook, ti, tf, si, sf,
         allProducts, amazonBundlesProducts, groceryBundlesProducts);
 
   }

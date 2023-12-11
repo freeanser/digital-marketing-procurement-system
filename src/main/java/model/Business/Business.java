@@ -6,18 +6,25 @@
 package model.Business;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import model.CustomerManagement.CustomerDirectory;
+import model.CustomerManagement.CustomerProfile;
 import model.MarketModel.ChannelCatalog;
 import model.MarketModel.MarketCatalog;
 import model.MarketingManagement.MarketingPersonDirectory;
 import model.OrderManagement.MasterOrderList;
 import model.OrderManagement.MasterSolutionOrderList;
+import model.OrderManagement.Order;
+import model.OrderManagement.SolutionOrder;
 import model.Personnel.EmployeeDirectory;
 import model.Personnel.PersonDirectory;
+import model.ProductManagement.Product;
+import model.ProductManagement.ProductCatalog;
 import model.ProductManagement.ProductSummary;
 import model.ProductManagement.ProductsReport;
 import model.ProductManagement.SolutionOfferCatalog;
+import model.ProductManagement.SolutionOffer;
 import model.SalesManagement.SalesPersonDirectory;
 import model.Supplier.Supplier;
 import model.Supplier.SupplierDirectory;
@@ -58,6 +65,61 @@ public class Business {
         channelcatalog = new ChannelCatalog(this);
         mastersolutionorderlist = new MasterSolutionOrderList(this);
 
+    }
+
+    public static void createABusinessAndSolutions(Business business, int soOrderCount, int soItemCount,
+            SolutionOffer solutionOffer) {
+
+        // Add Solution Order
+        loadSolutionOrders(business, soOrderCount, soItemCount, solutionOffer);
+
+    }
+
+    static int getRandom(int lower, int upper) {
+        Random r = new Random();
+
+        // nextInt(n) will return a number from zero to 'n'. Therefore e.g. if I want
+        // numbers from 10 to 15
+        // I will have result = 10 + nextInt(5)
+        int randomInt = lower + r.nextInt(upper - lower);
+        return randomInt;
+    }
+
+    public static void loadSolutionOrders(Business b, int orderCount, int itemCount,
+            SolutionOffer solutionOffer) {
+        MasterSolutionOrderList masterSolutionOrderList = b.getMastersolutionorderlist();
+
+        // pick a random customer (reach to customer directory)
+        CustomerDirectory cd = b.getCustomerDirectory();
+
+        for (int index = 0; index < orderCount; index++) {
+
+            CustomerProfile randomCustomer = cd.pickRandomCustomer();
+            if (randomCustomer == null) {
+                System.out.println("Cannot generate orders. No customers in the customer directory.");
+                return;
+            }
+
+            // create an order for that customer
+            SolutionOrder randomOrder = masterSolutionOrderList.newSOOrder(randomCustomer);
+
+            int randomItemCount = getRandom(1, itemCount);
+            for (int itemIndex = 0; itemIndex < randomItemCount; itemIndex++) {
+                int price = solutionOffer.getPrice();
+                int quantity = solutionOffer.getProducts().size();
+                int randomPrice = getRandom((price - 20), (price + 20));
+                int randomQuantity = getRandom((quantity - 1), (quantity + 1));
+
+                randomOrder.newOrderItem(solutionOffer, randomPrice, randomQuantity,
+                        randomOrder);
+            }
+        }
+        // Make sure order items are connected to the order
+
+    }
+
+    public MasterSolutionOrderList getMastersolutionorderlist() {
+        return mastersolutionorderlist;
     }
 
     public SolutionOfferCatalog getSolutionoffercatalog() {

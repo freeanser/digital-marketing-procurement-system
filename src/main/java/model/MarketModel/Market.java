@@ -137,20 +137,20 @@ public class Market {
         return false;
     }
 
-    public MarketChannelAssignment newMarketChannelAssignment(Channel c) {
-        MarketChannelAssignment mca = new MarketChannelAssignment(this, c);
-        marketChannelAssignments.add(mca);
-        return mca;
-    }
+    // public MarketChannelAssignment newMarketChannelAssignment(Channel c) {
+    // MarketChannelAssignment mca = new MarketChannelAssignment(this, c);
+    // marketChannelAssignments.add(mca);
+    // return mca;
+    // }
 
-    public MarketChannelAssignment findMarketChannelAssignment(Channel c) {
-        for (MarketChannelAssignment mca : marketChannelAssignments) {
-            if (mca.isMatch(c)) {
-                return mca;
-            }
-        }
-        return null; // not found after going through the whole list
-    }
+    // public MarketChannelAssignment findMarketChannelAssignment(Channel c) {
+    // for (MarketChannelAssignment mca : marketChannelAssignments) {
+    // if (mca.isMatch(c)) {
+    // return mca;
+    // }
+    // }
+    // return null; // not found after going through the whole list
+    // }
 
     public void printShortInfo() {
         System.out.println("Market: " + name);

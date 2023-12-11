@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import model.OrderManagement.MasterSolutionOrderList;
 import model.CustomerManagement.CustomerProfile;
 import model.OrderManagement.SolutionOfferOrderItem;
+import model.ProductManagement.Product;
+import model.ProductManagement.SolutionOffer;
 
 public class SolutionOrder {
 
@@ -33,6 +35,15 @@ public class SolutionOrder {
 
   public void setSolutionOfferOrderItems(ArrayList<SolutionOfferOrderItem> solutionOfferOrderItems) {
     this.solutionOfferOrderItems = solutionOfferOrderItems;
+  }
+
+  public SolutionOfferOrderItem newOrderItem(SolutionOffer so, int paidprice, int q, SolutionOrder o) {
+    SolutionOfferOrderItem oi = new SolutionOfferOrderItem(so, paidprice, q, o);
+    solutionOfferOrderItems.add(oi);
+
+    // 2-3: Link the orderItem to the order
+    oi.setSolutionOrder(this);
+    return oi;
   }
 
   public MasterSolutionOrderList getMasterSolutionOrderList() {
