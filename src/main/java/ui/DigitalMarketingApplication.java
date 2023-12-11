@@ -137,7 +137,7 @@ public class DigitalMarketingApplication {
     }
   }
 
-  // Handle Teacher Option
+  // Handle customer Teacher Option
   public void handleTeacherOption(Scanner sc, Market marketTeachers) {
 
     System.out.println("This is the list of the " + marketTeachers.getCustomersID());
@@ -183,7 +183,7 @@ public class DigitalMarketingApplication {
 
   }
 
-  // Handle teacher & instagram
+  // Handle customer teacher & instagram
   public void handleTeacherInstagram(Scanner sc) {
     // TI
     SolutionOffer amazonBundlesProductsTI = model.getSolutionoffercatalog().newSolutionOffer(model.getTi(),
@@ -466,7 +466,7 @@ public class DigitalMarketingApplication {
     System.out.println("This is the list of the Sales Orders");
     System.out.println("What's the report you would like to check? Please pick an option");
     System.out.println("1. Total Sales");
-    System.out.println("2. Market");
+    System.out.println("2. What Market");
     System.out.println("3. Channel");
     System.out.println("4. Advertisement");
     System.out.println("5. Solution Offer");
@@ -476,24 +476,13 @@ public class DigitalMarketingApplication {
 
     // 1.
     if (input.equals("1")) {
-      // int totalSales = 0;
-      // for (SolutionOffer so : model.getSolutionoffercatalog().getSolutionoffers())
-      // {
-      // int price = so.getPrice();
-      // int size = so.getProducts().size();
-
-      // int salesVolume = so.getSalesVolume(price, size);
-
-      // totalSales += salesVolume;
-      // }
-
       int totalSales = model.getSolutionoffercatalog().totalSalesRevenues();
       System.out.println("Total Sales Revenues: $" + totalSales);
     }
 
     // 2.
     if (input.equals("2")) {
-
+      ManagingMarketOption(sc);
     }
     // 3.
     if (input.equals("3")) {
@@ -515,32 +504,80 @@ public class DigitalMarketingApplication {
 
   }
 
+  // Handle managing Market Option
+  public void ManagingMarketOption(Scanner sc) {
+
+    System.out.println("What market you are looking for? Please pick an option:");
+    System.out.println("1. Market Teacher");
+    System.out.println("2. Market Student");
+
+    String input = sc.next();
+
+    // 1. I am a teacher
+    if (input.equals("1")) {
+      ManagingTeacherOption(sc);
+    }
+
+    // 2. I am an student
+    if (input.equals("2")) {
+      ManagingStudentOption(sc);
+    }
+  }
+
+  // Handle managing Teacher Option
+  public void ManagingTeacherOption(Scanner sc) {
+
+  }
+
+  // Handle managing teacher & instagram
+  public void ManagingTeacherInstagram(Scanner sc) {
+  }
+
+  // Handle managing teacher & facebook
+  public void ManagingTeacherFacebook(Scanner sc) {
+  }
+
+  // Handle managing Student Option
+  public void ManagingStudentOption(Scanner sc) {
+
+  }
+
+  // Handle managing student & instagram
+  public void ManagingStudentInstagram(Scanner sc) {
+  }
+
+  // Handle managing student & facebook
+  public void ManagingStudentFacebook(Scanner sc) {
+  }
+
   // Handle Reports Option
-  public static void handleReportsOption(Scanner sc, Market marketStudents) {
-    boolean exitCode = false;
+  public void handleReportsOption(Scanner sc, Market marketStudents) {
 
-    while (!exitCode) {
-      System.out.println("This is the list of the ");
-      System.out.println("What's the report you would like to check? Please pick an option");
-      System.out.println("1. ");
-      System.out.println("2. ");
-      System.out.println("3. Exit");
+    System.out.println(
+        "This is the report to enable management to know sales revenues by market, channel, ads, and solution bundles.");
+    int totalSales = model.getSolutionoffercatalog().totalSalesRevenues();
+    System.out.println("Total Sales Revenues: $" + totalSales);
 
-      String input = sc.next();
+    System.out.println("What's the report you would like to check? Please pick an option");
+    System.out.println("1. ");
+    System.out.println("2. ");
+    System.out.println("3. Exit");
 
-      // 1.
-      if (input.equals("1")) {
+    String input = sc.next();
 
-      }
+    // 1.
+    if (input.equals("1")) {
 
-      // 2.
-      if (input.equals("2")) {
+    }
 
-      }
+    // 2.
+    if (input.equals("2")) {
 
-      if (input.equals("3"))
-        exitCode = true;
+    }
 
+    if (input.equals("3")) {
+      System.out.println("Thank you, have a nice day.");
+      sc.close();
     }
   }
 
