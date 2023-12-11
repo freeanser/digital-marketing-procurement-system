@@ -639,6 +639,68 @@ public class DigitalMarketingApplication {
 
   // Handle managing teacher & facebook
   public void ManagingTeacherFacebook(Scanner sc) {
+    // TF
+    SolutionOffer amazonBundlesProductsTF = model.getSolutionoffercatalog().newSolutionOffer(model.getTf(),
+        model.getAmazonBundlesProducts(), 1770);
+    SolutionOffer groceryBundlesProductsTF = model.getSolutionoffercatalog().newSolutionOffer(model.getTf(),
+        model.getGroceryBundlesProducts(), 1880);
+    System.out.println("Check ads and solution bundles. Please pick an option");
+    System.out.println("1. Amazon Bundles Products");
+    System.out.println("2. Grocery Bundles Products");
+    System.out.println("3. Previous Page");
+    System.out.println("4. Exit");
+
+    String input = sc.next();
+
+    // 1. Amazon Bundles Products
+    if (input.equals("1")) {
+      model.getTf().printInfo();
+
+      System.out.println("Including all these items, the total cost is only $" + amazonBundlesProductsTF.getPrice()
+          + "! Act fast before it's gone! ");
+      amazonBundlesProductsTF.findProductsName();
+
+      int price = amazonBundlesProductsTF.getPrice();
+      int quantity = amazonBundlesProductsTF.getProducts().size();
+
+      int total = amazonBundlesProductsTF.getSalesVolume(price, quantity);
+
+      System.out.println("The Sales Revenues by Market Teacher, Channel Facebook, Ads Amazon Bundles Products is $"
+          + total);
+    }
+
+    // 2. Grocery Bundles Products
+    if (input.equals("2")) {
+      model.getTf().printInfo();
+
+      System.out.println("Including all these items, the total cost is only $" + groceryBundlesProductsTF.getPrice()
+          + "! Act fast before it's gone! ");
+      groceryBundlesProductsTF.finProductsIngredientName();
+
+      int price = groceryBundlesProductsTF.getPrice();
+      int quantity = groceryBundlesProductsTF.getProducts().size();
+
+      int total = groceryBundlesProductsTF.getSalesVolume(price, quantity);
+
+      System.out.println("The Sales Revenues by Market Teacher, Channel Facebook, Ads Grocery Bundles Products is $"
+          + total);
+    }
+
+    // 3. Previous Page
+    if (input.equals("3"))
+      handleTeacherOption(sc, model.getMarketTeachers());
+
+    // 4. Exit
+    if (input.equals("4")) {
+      System.out.println("Thank you, have a nice day.");
+      sc.close();
+    }
+
+    // if user press other keys
+    if (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
+      System.out.println("Please enter a valid option.");
+      handleTeacherFacebook(sc);
+    }
 
   }
 
