@@ -107,7 +107,10 @@ public class Business {
             int randomItemCount = getRandom(1, itemCount);
             for (int itemIndex = 0; itemIndex < randomItemCount; itemIndex++) {
                 int price = solutionOffer.getPrice();
+
+                // ??
                 int quantity = solutionOffer.getProducts().size();
+
                 int randomPrice = getRandom((price - 20), (price + 20));
                 int randomQuantity = getRandom((quantity - 1), (quantity + 1));
 

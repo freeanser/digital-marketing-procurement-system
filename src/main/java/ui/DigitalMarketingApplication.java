@@ -75,6 +75,7 @@ public class DigitalMarketingApplication {
 
     String input = sc.next();
 
+    // 1-1: A customer decides to browse and search for products
     // 1. I am a customer and want to buy products
     if (input.equals("1")) {
       CustomerOption(sc);
@@ -104,6 +105,7 @@ public class DigitalMarketingApplication {
     }
   }
 
+  // 1-1: A customer decides to browse and search for products
   // Handle Customer Option
   public void CustomerOption(Scanner sc) {
 
@@ -142,6 +144,7 @@ public class DigitalMarketingApplication {
     }
   }
 
+  // 1-1: A customer decides to browse and search for products
   // Handle customer Teacher Option
   public void handleTeacherOption(Scanner sc, Market marketTeachers) {
 
@@ -159,7 +162,6 @@ public class DigitalMarketingApplication {
       model.getTi().printInfo();
 
       handleTeacherInstagram(sc);
-
     }
 
     // 1. I am a teacher and choose 2. Facebook
@@ -171,7 +173,7 @@ public class DigitalMarketingApplication {
 
     // 3. Previous Page
     if (input.equals("3"))
-      renderMainMenuOptions(sc);
+      CustomerOption(sc);
 
     // 4. Exit
     if (input.equals("4")) {
@@ -188,6 +190,7 @@ public class DigitalMarketingApplication {
 
   }
 
+  // 1-1: A customer decides to browse and search for products
   // Handle customer teacher & instagram
   public void handleTeacherInstagram(Scanner sc) {
     // TI
@@ -200,6 +203,7 @@ public class DigitalMarketingApplication {
 
     String input = sc.next();
 
+    // 1-2: The product descriptions and ads must speak the customer language.
     // 1. Amazon Bundles Products
     if (input.equals("1")) {
       System.out.println("Including all these items, the total cost is only $" + amazonBundlesProductsTI.getPrice()
@@ -209,6 +213,7 @@ public class DigitalMarketingApplication {
       handleBuyOrNot(sc, amazonBundlesProductsTI);
     }
 
+    // 1-2: The product descriptions and ads must speak the customer language.
     // 2. Grocery Bundles Products
     if (input.equals("2")) {
       System.out.println("Including all these items, the total cost is only $" + groceryBundlesProductsTI.getPrice()
@@ -237,6 +242,7 @@ public class DigitalMarketingApplication {
 
   }
 
+  // 1-1: A customer decides to browse and search for products
   // Handle teacher & facebook
   public void handleTeacherFacebook(Scanner sc) {
     // TF
@@ -249,6 +255,7 @@ public class DigitalMarketingApplication {
 
     String input = sc.next();
 
+    // 1-2: The product descriptions and ads must speak the customer language.
     // 1. Amazon Bundles Products
     if (input.equals("1")) {
       System.out.println("Including all these items, the total cost is only $" + amazonBundlesProductsTF.getPrice()
@@ -258,6 +265,7 @@ public class DigitalMarketingApplication {
       handleBuyOrNot(sc, amazonBundlesProductsTF);
     }
 
+    // 1-2: The product descriptions and ads must speak the customer language.
     // 2. Grocery Bundles Products
     if (input.equals("2")) {
       System.out.println("Including all these items, the total cost is only $" + groceryBundlesProductsTF.getPrice()
@@ -286,6 +294,7 @@ public class DigitalMarketingApplication {
 
   }
 
+  // 1-1: A customer decides to browse and search for products
   // Handle Student Option
   public void handleStudentOption(Scanner sc, Market marketStudents) {
 
@@ -313,7 +322,7 @@ public class DigitalMarketingApplication {
 
     // 3. Previous Page
     if (input.equals("3")) {
-      renderMainMenuOptions(sc);
+      CustomerOption(sc);
     }
 
     // 4. Exit
@@ -329,6 +338,7 @@ public class DigitalMarketingApplication {
     }
   }
 
+  // 1-1: A customer decides to browse and search for products
   // Handle student & instagram
   public void handleStudentInstagram(Scanner sc) {
     // SI
@@ -341,6 +351,7 @@ public class DigitalMarketingApplication {
 
     String input = sc.next();
 
+    // 1-2: The product descriptions and ads must speak the customer language.
     // 1. Amazon Bundles Products
     if (input.equals("1")) {
       System.out.println("Including all these items, the total cost is only $" + amazonBundlesProductsSI.getPrice()
@@ -350,6 +361,7 @@ public class DigitalMarketingApplication {
       handleBuyOrNot(sc, amazonBundlesProductsSI);
     }
 
+    // 1-2: The product descriptions and ads must speak the customer language.
     // 2. Grocery Bundles Products
     if (input.equals("2")) {
       System.out.println("Including all these items, the total cost is only $" + groceryBundlesProductsSI.getPrice()
@@ -378,6 +390,7 @@ public class DigitalMarketingApplication {
 
   }
 
+  // 1-1: A customer decides to browse and search for products
   // Handle student & facebook
   public void handleStudentFacebook(Scanner sc) {
     // SF
@@ -390,6 +403,7 @@ public class DigitalMarketingApplication {
 
     String input = sc.next();
 
+    // 1-2: The product descriptions and ads must speak the customer language.
     // 1. Amazon Bundles Products
     if (input.equals("1")) {
       System.out.println("Including all these items, the total cost is only $" + amazonBundlesProductsSF.getPrice()
@@ -399,6 +413,7 @@ public class DigitalMarketingApplication {
       handleBuyOrNot(sc, amazonBundlesProductsSF);
     }
 
+    // 1-2: The product descriptions and ads must speak the customer language.
     // 2. Grocery Bundles Products
     if (input.equals("2")) {
       System.out.println("Including all these items, the total cost is only $" + groceryBundlesProductsSF.getPrice()
@@ -878,6 +893,10 @@ public class DigitalMarketingApplication {
   }
 
   public static DigitalMarketApplicationModel populateModel() {
+    // 1-3: Configuring products and services as solution bundles targeting
+    // different markets and channels. Markets, channels, and customer types are
+    // configured and populated as well.
+
     Business business = ConfigureABusiness.createABusinessAndLoadALotOfData("Xerox", 50, 10, 30, 100, 10);
     SupplierDirectory sd = business.getSupplierDirectory();
     MasterOrderList mol = business.getMasterOrderList();
@@ -907,6 +926,8 @@ public class DigitalMarketingApplication {
     ArrayList<Product> groceryBundlesProducts = solutionoffercatalog.setRandomProducts(allProducts, 5);
 
     // solution offer
+    // 1-1: The system displaces bundled products and services (solution) as well as
+    // ads that match customer expectations.
     // // TI
     SolutionOffer amazonBundlesProductsTI = solutionoffercatalog.newSolutionOffer(
         "Amazon Bundles Products for Teachers on Instagram", ti,
