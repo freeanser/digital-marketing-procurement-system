@@ -23,17 +23,17 @@ public class SolutionOfferReport {
   }
 
   public void printSolutionOfferReport() {
-    System.out.println("Solution Offer Report");
+    System.out.println("Solution Report");
     System.out.println("Sorting Rule: " + sortingRule);
-    System.out.println("Solution Offer Summary List: ");
+    System.out.println("Solution Summary List: ");
     for (SolutionOfferSummary sos : solutionOfferSummaryList) {
 
       StringBuilder sb = new StringBuilder();
       sb.append("Market: " + sos.getMarket().getName() + "\n");
       sb.append("Channel: " + sos.getChannel().getName() + "\n");
       sb.append("Advertisement: " + sos.getAdvertisement() + "\n");
-      sb.append("Solution Offer Name: " + sos.getName() + "\n");
-      sb.append("Total Revenue: " + sos.getTotalRevenue() + "\n");
+      sb.append("Solution Bundles Name: " + sos.getName() + "\n");
+      sb.append("Total Revenue (Actual Sales): " + sos.getTotalRevenue() + "\n");
       sb.append("\n");
 
       System.out.println(sb.toString());

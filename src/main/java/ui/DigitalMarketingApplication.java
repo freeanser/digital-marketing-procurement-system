@@ -110,7 +110,7 @@ public class DigitalMarketingApplication {
     System.out.println("Welcome to join Education Sale! Please pick an option:");
     System.out.println("1. I am a teacher");
     System.out.println("2. I am an student");
-    System.out.println("3. I want to see the reports");
+    System.out.println("3. Previous Page");
     System.out.println("4. Exit");
 
     String input = sc.next();
@@ -125,9 +125,9 @@ public class DigitalMarketingApplication {
       handleStudentOption(sc, model.getMarketStudents());
     }
 
-    // 3. I want to see the reports
+    // 3. Previous Page
     if (input.equals("3")) {
-      System.out.println("Please pick an option:");
+      renderMainMenuOptions(sc);
     }
 
     // 4. Exit
