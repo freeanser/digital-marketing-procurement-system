@@ -71,10 +71,8 @@ public class SolutionOfferCatalog {
     public int totalSalesRevenues() {
         int totalSales = 0;
         for (SolutionOffer so : solutionoffers) {
-            int price = so.getPrice();
-            int size = so.getProducts().size();
 
-            int salesVolume = so.getSalesVolume(price, size);
+            int salesVolume = so.getSalesVolume();
 
             totalSales += salesVolume;
         }

@@ -57,11 +57,13 @@ public class SolutionOfferOrderItem {
     }
   }
 
-  public int getRandomSOITotal(int price, int quantity) {
-    int randomPrice = getRandom((price - 20), (price + 20));
-    int randomQuantity = getRandom((quantity - 1), (quantity + 1));
-    int randomTotal = randomPrice * randomQuantity;
-    return randomTotal;
+  // public int getTotal(int price, int quantity) {
+
+  public int getTotal() {
+    // int randomPrice = getRandom((price - 20), (price + 20));
+    // int randomQuantity = getRandom((quantity - 1), (quantity + 1));
+    int Total = actualPrice * quantity;
+    return Total;
 
   }
 

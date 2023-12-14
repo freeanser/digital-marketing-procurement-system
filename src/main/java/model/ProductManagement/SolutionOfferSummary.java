@@ -1,9 +1,13 @@
 package model.ProductManagement;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import model.Business.Business;
 import model.MarketModel.Market;
 import model.MarketModel.MarketChannelAssignment;
+import model.OrderManagement.SolutionOfferOrderItem;
+import model.OrderManagement.SolutionOrder;
 import model.MarketModel.Advertisement;
 import model.MarketModel.Channel;
 
@@ -27,8 +31,28 @@ public class SolutionOfferSummary {
     advertisement = marketChannel.getAdvertisingMessage();
     name = so.getName();
 
-    totalRevenue = so.getSalesVolume(so.getPrice(), so.getProducts().size());
+    // totalRevenue = so.getSalesVolume(so.getPrice(), so.getProducts().size());
 
+    totalRevenue = this.getAllSolutionOfferPrice();
+
+  }
+
+  public int getAllSolutionOfferPrice() {
+    int totalRevenue = 0;
+    ArrayList<SolutionOfferOrderItem> solutionOrderItems = solutionOffer.getSolutionOfferOrderItems();
+    for (SolutionOfferOrderItem solutionOfferOrderItem : solutionOrderItems) {
+      int price = solutionOfferOrderItem.getActualPrice();
+      int quantity = solutionOfferOrderItem.getQuantity();
+      int total = price * quantity;
+      totalRevenue += total;
+    }
+    return totalRevenue;
+
+    // return solutionOffer.getPrice();
+  }
+
+  public int getOrderItemSize() {
+    return solutionOffer.getSolutionOfferOrderItems().size();
   }
 
   public Business getBusiness() {

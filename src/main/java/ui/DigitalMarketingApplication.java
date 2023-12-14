@@ -10,6 +10,7 @@ import java.util.Scanner;
 import com.github.javafaker.Faker;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import model.Business.Business;
@@ -66,6 +67,29 @@ public class DigitalMarketingApplication {
   }
 
   public void renderMainMenuOptions(Scanner sc) {
+    // Test : This can explain my thought of the application
+    // solutionOfferOrderItem = bundles products
+    // System.out.println("SolutionOrders().size: " +
+    // model.getMasterSolutionOrderList().getSolutionOrders().size());
+
+    // List<SolutionOrder> solutionOrders =
+    // model.getMasterSolutionOrderList().getSolutionOrders();
+    // for (SolutionOrder solutionOrder : solutionOrders) {
+
+    // int solutionOfferOrderItemsCount =
+    // solutionOrder.getSolutionOfferOrderItems().size();
+
+    // // getSolutionOffer
+    // System.out.println(" SolutionOfferOrderItems Count: "
+    // + solutionOfferOrderItemsCount);
+
+    // for (SolutionOfferOrderItem solutionOfferOrderItem :
+    // solutionOrder.getSolutionOfferOrderItems()) {
+    // int price = solutionOfferOrderItem.getActualPrice();
+    // System.out.println(" solutionOfferOrderItem: "
+    // + solutionOfferOrderItem.getSolutionOffer().getName() + " price: " + price);
+    // }
+    // }
 
     System.out.println("Welcome to join Education Sale! Please pick an option:");
     System.out.println("1. I am a customer and want to buy products");
@@ -172,8 +196,9 @@ public class DigitalMarketingApplication {
     }
 
     // 3. Previous Page
-    if (input.equals("3"))
+    if (input.equals("3")) {
       CustomerOption(sc);
+    }
 
     // 4. Exit
     if (input.equals("4")) {
@@ -607,13 +632,8 @@ public class DigitalMarketingApplication {
           + "! Act fast before it's gone! ");
       amazonBundlesProductsTI.findProductsName();
 
-      int price = amazonBundlesProductsTI.getPrice();
-      int quantity = amazonBundlesProductsTI.getProducts().size();
-
-      int total = amazonBundlesProductsTI.getSalesVolume(price, quantity);
-
-      System.out.println("The Sales Revenues by Market Teacher, Channel Instagram, Ads Amazon Bundles Products is $"
-          + total);
+      int total = amazonBundlesProductsTI.getSalesVolume();
+      System.out.println("The Sales Revenues by Market Teacher, Channel Instagram, Total is (3)$" + total);
     }
 
     // 2. Grocery Bundles Products
@@ -624,10 +644,7 @@ public class DigitalMarketingApplication {
           + "! Act fast before it's gone! ");
       groceryBundlesProductsTI.finProductsIngredientName();
 
-      int price = groceryBundlesProductsTI.getPrice();
-      int quantity = groceryBundlesProductsTI.getProducts().size();
-
-      int total = groceryBundlesProductsTI.getSalesVolume(price, quantity);
+      int total = groceryBundlesProductsTI.getSalesVolume();
 
       System.out.println("The Sales Revenues by Market Teacher, Channel Instagram, Ads Grocery Bundles Products is $"
           + total);
@@ -674,13 +691,13 @@ public class DigitalMarketingApplication {
           + "! Act fast before it's gone! ");
       amazonBundlesProductsTF.findProductsName();
 
-      int price = amazonBundlesProductsTF.getPrice();
-      System.out.println("The price is $" + price);
+      // int price = amazonBundlesProductsTF.getPrice();
+      // System.out.println("The price is $" + price);
 
-      int quantity = amazonBundlesProductsTF.getProducts().size();
-      System.out.println("The quantity is " + quantity);
+      // int quantity = amazonBundlesProductsTF.getProducts().size();
+      // System.out.println("The quantity is " + quantity);
 
-      int total = amazonBundlesProductsTF.getSalesVolume(price, quantity);
+      int total = amazonBundlesProductsTF.getSalesVolume();
       System.out.println("The total is $" + total);
 
       System.out.println("The Sales Revenues by Market Teacher, Channel Facebook, Ads Amazon Bundles Products is $"
@@ -695,10 +712,7 @@ public class DigitalMarketingApplication {
           + "! Act fast before it's gone! ");
       groceryBundlesProductsTF.finProductsIngredientName();
 
-      int price = groceryBundlesProductsTF.getPrice();
-      int quantity = groceryBundlesProductsTF.getProducts().size();
-
-      int total = groceryBundlesProductsTF.getSalesVolume(price, quantity);
+      int total = groceryBundlesProductsTF.getSalesVolume();
 
       System.out.println("The Sales Revenues by Market Teacher, Channel Facebook, Ads Grocery Bundles Products is $"
           + total);
@@ -783,10 +797,7 @@ public class DigitalMarketingApplication {
           + "! Act fast before it's gone! ");
       amazonBundlesProductsSI.findProductsName();
 
-      int price = amazonBundlesProductsSI.getPrice();
-      int quantity = amazonBundlesProductsSI.getProducts().size();
-
-      int total = amazonBundlesProductsSI.getSalesVolume(price, quantity);
+      int total = amazonBundlesProductsSI.getSalesVolume();
 
       System.out.println("The Sales Revenues by Market Student, Channel Instagram, Ads Amazon Bundles Products is $"
           + total);
@@ -800,10 +811,7 @@ public class DigitalMarketingApplication {
           + "! Act fast before it's gone! ");
       groceryBundlesProductsSI.finProductsIngredientName();
 
-      int price = groceryBundlesProductsSI.getPrice();
-      int quantity = groceryBundlesProductsSI.getProducts().size();
-
-      int total = groceryBundlesProductsSI.getSalesVolume(price, quantity);
+      int total = groceryBundlesProductsSI.getSalesVolume();
 
       System.out.println("The Sales Revenues by Market Student, Channel Instagram, Ads Grocery Bundles Products is $"
           + total);
@@ -849,10 +857,7 @@ public class DigitalMarketingApplication {
           + "! Act fast before it's gone! ");
       amazonBundlesProductsSF.findProductsName();
 
-      int price = amazonBundlesProductsSF.getPrice();
-      int quantity = amazonBundlesProductsSF.getProducts().size();
-
-      int total = amazonBundlesProductsSF.getSalesVolume(price, quantity);
+      int total = amazonBundlesProductsSF.getSalesVolume();
 
       System.out.println("The Sales Revenues by Market Student, Channel Facebook, Ads Amazon Bundles Products is $"
           + total);
@@ -866,10 +871,7 @@ public class DigitalMarketingApplication {
           + "! Act fast before it's gone! ");
       groceryBundlesProductsSF.finProductsIngredientName();
 
-      int price = groceryBundlesProductsSF.getPrice();
-      int quantity = groceryBundlesProductsSF.getProducts().size();
-
-      int total = groceryBundlesProductsSF.getSalesVolume(price, quantity);
+      int total = groceryBundlesProductsSF.getSalesVolume();
 
       System.out.println("The Sales Revenues by Market Student, Channel Facebook, Ads Grocery Bundles Products is $"
           + total);

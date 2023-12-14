@@ -34,6 +34,9 @@ public class SolutionOfferReport {
       sb.append("Advertisement: " + sos.getAdvertisement() + "\n");
       sb.append("Solution Bundles Name: " + sos.getName() + "\n");
       sb.append("Total Revenue (Actual Sales): " + sos.getTotalRevenue() + "\n");
+      // sb.append("get AllSolutionOfferPrice: " + sos.getAllSolutionOfferPrice() +
+      // "\n");
+
       sb.append("\n");
 
       System.out.println(sb.toString());

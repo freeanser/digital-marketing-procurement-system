@@ -1,24 +1,25 @@
-package model.OrderManagement;
+// package model.OrderManagement;
 
-import java.util.ArrayList;
-import java.util.Collections;
+// import java.util.ArrayList;
+// import java.util.Collections;
 
-public class SolutionReport {
+// public class SolutionReport {
 
-  ArrayList<SolutionSummary> solutionSummaryList;
-  String sortingRule;
+// ArrayList<SolutionSummary> solutionSummaryList;
+// String sortingRule;
 
-  public SolutionReport(String sortingRule) {
-    solutionSummaryList = new ArrayList<SolutionSummary>();
-    this.sortingRule = sortingRule;
-    /// We could make it "pre-populate" with the existing supplier data
-  }
+// public SolutionReport(String sortingRule) {
+// solutionSummaryList = new ArrayList<SolutionSummary>();
+// this.sortingRule = sortingRule;
+// /// We could make it "pre-populate" with the existing supplier data
+// }
 
-  public void addSolutionSummary(SolutionSummary ss) {
-    solutionSummaryList.add(ss);
+// public void addSolutionSummary(SolutionSummary ss) {
+// solutionSummaryList.add(ss);
 
-    SolutionSummaryComparator comparator = new SolutionSummaryComparator(sortingRule);
-    Collections.sort(solutionSummaryList, comparator);
-  }
+// SolutionSummaryComparator comparator = new
+// SolutionSummaryComparator(sortingRule);
+// Collections.sort(solutionSummaryList, comparator);
+// }
 
-}
+// }
