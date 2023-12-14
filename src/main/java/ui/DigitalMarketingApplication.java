@@ -42,8 +42,14 @@ import model.Supplier.SupplierDirectory;
  */
 public class DigitalMarketingApplication {
 
+  // 2-6: Generate creative ideas beyond the requirements.
+  // I create a class to store all the data
   private DigitalMarketApplicationModel model;
 
+  // 2-6: Generate creative ideas beyond the requirements.
+  // I created a constructor. This is a constructor with a
+  // DigitalMarketApplicationModel parameter, used to initialize objects of the
+  // DigitalMarketingApplication class.
   public DigitalMarketingApplication(DigitalMarketApplicationModel model) {
     this.model = model;
   }
@@ -886,6 +892,7 @@ public class DigitalMarketingApplication {
     }
   }
 
+  // 2-6: Generate creative ideas beyond the requirements.
   public static DigitalMarketApplicationModel populateModel() {
     // 1-3: Configuring products and services as solution bundles targeting
     // different markets and channels. Markets, channels, and customer types are
@@ -948,8 +955,9 @@ public class DigitalMarketingApplication {
     SolutionOffer groceryBundlesProductsSF = solutionoffercatalog
         .newSolutionOffer("Grocery Bundles Products for Students on Facebook", sf, groceryBundlesProducts, 1030);
 
+    // 2-4: Autogenerate sales orders with different pricing options as well as
+    // product, people, markets, and channel perspectives.
     // Solution Order and Order Item
-
     // TI
     Business.createABusinessAndSolutions(business, 10, 10, amazonBundlesProductsTI);
     Business.createABusinessAndSolutions(business, 10, 10, groceryBundlesProductsTI);
