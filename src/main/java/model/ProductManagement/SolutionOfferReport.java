@@ -26,21 +26,25 @@ public class SolutionOfferReport {
     System.out.println("Solution Report");
     System.out.println("Sorting Rule: " + sortingRule);
     System.out.println("Solution Summary List: ");
+    int totalSaleRevenue = 0;
     for (SolutionOfferSummary sos : solutionOfferSummaryList) {
+
+      int totalRevenueForOneOffer = sos.getTotalRevenue();
 
       StringBuilder sb = new StringBuilder();
       sb.append("Market: " + sos.getMarket().getName() + "\n");
       sb.append("Channel: " + sos.getChannel().getName() + "\n");
       sb.append("Advertisement: " + sos.getAdvertisement() + "\n");
       sb.append("Solution Bundles Name: " + sos.getName() + "\n");
-      sb.append("Total Revenue (Actual Sales): " + sos.getTotalRevenue() + "\n");
-      // sb.append("get AllSolutionOfferPrice: " + sos.getAllSolutionOfferPrice() +
-      // "\n");
+      sb.append("Total Revenue For One Offer (Actual Sales): " + totalRevenueForOneOffer + "\n");
 
       sb.append("\n");
 
       System.out.println(sb.toString());
+      totalSaleRevenue += totalRevenueForOneOffer;
     }
+
+    System.out.println("Total Sales Revenue: " + totalSaleRevenue);
   }
 
 }

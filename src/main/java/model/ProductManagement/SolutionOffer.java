@@ -121,7 +121,6 @@ public class SolutionOffer {
         for (SolutionOfferOrderItem soi : solutionOfferOrderItems) {
 
             sum += soi.getTotal();
-            // System.out.println("getTotal - sum: " + sum);
         }
         return sum;
     }

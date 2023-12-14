@@ -54,11 +54,6 @@ public class DigitalMarketingApplication {
 
     // 1. Populate the model
     DigitalMarketingApplication application = new DigitalMarketingApplication(model);
-    // Faker faker = new Faker();
-    // Business business =
-    // ConfigureABusiness.createABusinessAndLoadALotOfData(faker.company().name(),
-    // 50, 10, 300, 100,
-    // 10);
 
     // 2. Maybe some interaction with the user (optional)
 
@@ -67,29 +62,6 @@ public class DigitalMarketingApplication {
   }
 
   public void renderMainMenuOptions(Scanner sc) {
-    // Test : This can explain my thought of the application
-    // solutionOfferOrderItem = bundles products
-    // System.out.println("SolutionOrders().size: " +
-    // model.getMasterSolutionOrderList().getSolutionOrders().size());
-
-    // List<SolutionOrder> solutionOrders =
-    // model.getMasterSolutionOrderList().getSolutionOrders();
-    // for (SolutionOrder solutionOrder : solutionOrders) {
-
-    // int solutionOfferOrderItemsCount =
-    // solutionOrder.getSolutionOfferOrderItems().size();
-
-    // // getSolutionOffer
-    // System.out.println(" SolutionOfferOrderItems Count: "
-    // + solutionOfferOrderItemsCount);
-
-    // for (SolutionOfferOrderItem solutionOfferOrderItem :
-    // solutionOrder.getSolutionOfferOrderItems()) {
-    // int price = solutionOfferOrderItem.getActualPrice();
-    // System.out.println(" solutionOfferOrderItem: "
-    // + solutionOfferOrderItem.getSolutionOffer().getName() + " price: " + price);
-    // }
-    // }
 
     System.out.println("Welcome to join Education Sale! Please pick an option:");
     System.out.println("1. I am a customer and want to buy products");
@@ -127,6 +99,30 @@ public class DigitalMarketingApplication {
 
       renderMainMenuOptions(sc);
     }
+
+    // // Test : This can explain my thought of the application
+    // solutionOfferOrderItem = bundles products
+    // System.out.println("SolutionOrders().size: " +
+    // model.getMasterSolutionOrderList().getSolutionOrders().size());
+
+    // List<SolutionOrder> solutionOrders =
+    // model.getMasterSolutionOrderList().getSolutionOrders();
+    // for (SolutionOrder solutionOrder : solutionOrders) {
+
+    // int solutionOfferOrderItemsCount =
+    // solutionOrder.getSolutionOfferOrderItems().size();
+
+    // // getSolutionOffer
+    // System.out.println(" SolutionOfferOrderItems Count: "
+    // + solutionOfferOrderItemsCount);
+
+    // for (SolutionOfferOrderItem solutionOfferOrderItem :
+    // solutionOrder.getSolutionOfferOrderItems()) {
+    // int price = solutionOfferOrderItem.getActualPrice();
+    // System.out.println(" solutionOfferOrderItem: "
+    // + solutionOfferOrderItem.getSolutionOffer().getName() + " price: " + price);
+    // }
+    // }
   }
 
   // 1-1: A customer decides to browse and search for products
@@ -482,7 +478,7 @@ public class DigitalMarketingApplication {
     // 1. Yes
     if (input.equals("1")) {
       System.out.println("Thank you for your purchase! Have a nice day!");
-      // confirmOrder(so);
+      // confirmOrderItems(so);
     }
 
     // 2. No
@@ -497,6 +493,8 @@ public class DigitalMarketingApplication {
     }
   }
 
+  // 2-5: Create and generate reports that show the total sales revenues and the
+  // sales revenues by market and channel.
   // Handle Sales Orders Option
   public void SalesOrdersOption(Scanner sc) {
 
@@ -519,6 +517,7 @@ public class DigitalMarketingApplication {
     if (input.equals("2")) {
       ManagingMarketOption(sc);
     }
+
     // 3. Previous Page
     if (input.equals("3")) {
       renderMainMenuOptions(sc);
@@ -633,7 +632,7 @@ public class DigitalMarketingApplication {
       amazonBundlesProductsTI.findProductsName();
 
       int total = amazonBundlesProductsTI.getSalesVolume();
-      System.out.println("The Sales Revenues by Market Teacher, Channel Instagram, Total is (3)$" + total);
+      System.out.println("The Sales Revenues by Market Teacher, Channel Instagram, Total is $" + total);
     }
 
     // 2. Grocery Bundles Products
@@ -691,14 +690,7 @@ public class DigitalMarketingApplication {
           + "! Act fast before it's gone! ");
       amazonBundlesProductsTF.findProductsName();
 
-      // int price = amazonBundlesProductsTF.getPrice();
-      // System.out.println("The price is $" + price);
-
-      // int quantity = amazonBundlesProductsTF.getProducts().size();
-      // System.out.println("The quantity is " + quantity);
-
       int total = amazonBundlesProductsTF.getSalesVolume();
-      System.out.println("The total is $" + total);
 
       System.out.println("The Sales Revenues by Market Teacher, Channel Facebook, Ads Amazon Bundles Products is $"
           + total);

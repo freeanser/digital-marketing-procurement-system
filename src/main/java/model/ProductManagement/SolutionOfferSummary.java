@@ -31,8 +31,6 @@ public class SolutionOfferSummary {
     advertisement = marketChannel.getAdvertisingMessage();
     name = so.getName();
 
-    // totalRevenue = so.getSalesVolume(so.getPrice(), so.getProducts().size());
-
     totalRevenue = this.getAllSolutionOfferPrice();
 
   }
